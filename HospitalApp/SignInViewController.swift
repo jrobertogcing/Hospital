@@ -48,7 +48,48 @@ class SignInViewController: UIViewController {
     
     @IBAction func logInButtonAction(_ sender: UIButton){
         
+        activityIndicator.startAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        logInButton.isEnabled = false
+        newUserButton.isEnabled = false
+        resetButton.isEnabled = false
+
         
+        
+        signInUser() { ready in
+            
+            
+            // check if the user is registered
+            // CHECK HERE IF THE EMAIL IS VERIFIED
+
+            if ready == true {
+            
+            
+                self.activityIndicator.stopAnimating()
+                
+                self.dataBaseNurse() { name, lastName in
+                
+                    if name != "" {
+                    
+                    self.sendToVCNurce()
+                    
+                    
+                    } else {
+                    
+                    
+                    self.alertGeneral(errorDescrip: "Not registered", information: "Information")
+                    
+                    
+                    }
+                
+                
+                }
+
+            
+            }
+        
+        
+        }
     
     }// End logInButtonAction
     
@@ -59,7 +100,7 @@ class SignInViewController: UIViewController {
         
         guard let nameText = emailTextField.text, let passwordText = passwordTextField.text, nameText != "", passwordText != "" else {
             
-          //  alertGeneral(errorDescrip: strFill, information: strInfo)
+            alertGeneral(errorDescrip: "Fill all the fields", information: "Information")
             
             completion(false)
             return
@@ -68,8 +109,72 @@ class SignInViewController: UIViewController {
         
     }// End func signInUser
 
-   
-    //MARK: Alert
+    
+//MARK: function search Nurse
+    
+    func dataBaseNurse(completion: @escaping (String, String) -> Void) {
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            
+            print("no user auth")
+            
+            return
+        }// End guard UserID
+        
+        
+        // check in Json "Doctor"
+        let ref = Database.database().reference().child("Nurce").child(userID);
+        
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            // Get user value
+            guard let dataInJSON = snapshot.value as? NSDictionary  else {
+                
+                print("no data in daba base Doctor")
+                
+                
+                completion("No", "No")
+                
+                return
+            }
+            
+            guard let name = dataInJSON["name"]  else {
+                
+                completion("No", "No")
+                return
+            }
+            
+            
+            guard let lastName = dataInJSON["lastName"]  else {
+                
+                completion("No", "No")
+                return
+            }
+            
+            
+            
+            completion(name as! String, lastName as! String)
+            
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+            self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+            
+            
+            
+        }// end json for Doctor
+        
+        
+        
+    }// End func dataBaseNurse
+
+    
+//MARK: Alert
     
     func alertGeneral(errorDescrip:String, information: String) {
             self.logInButton.isEnabled = true
@@ -90,7 +195,19 @@ class SignInViewController: UIViewController {
         
     }
 
+//MARK: function send to WELCOME NURSE ,
     
+    func sendToVCNurce(){
+        
+        
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NurseUITabBarController") as! NurseUITabBarController
+        self.present(nextViewController, animated:true, completion:nil)
+        
+        
+    }
     
 
 }// End ViewController

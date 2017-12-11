@@ -20,6 +20,7 @@
 		E12635341FDF01C700FCECBE /* HospitalAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635331FDF01C700FCECBE /* HospitalAppUITests.swift */; };
 		E12635421FDF133F00FCECBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E12635411FDF133F00FCECBE /* GoogleService-Info.plist */; };
 		E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635441FDF179F00FCECBE /* SignInViewController.swift */; };
+		E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635461FDF255100FCECBE /* NurseUITabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E12635351FDF01C700FCECBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E12635411FDF133F00FCECBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E12635441FDF179F00FCECBE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		E12635461FDF255100FCECBE /* NurseUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseUITabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E12635441FDF179F00FCECBE /* SignInViewController.swift */,
+				E12635461FDF255100FCECBE /* NurseUITabBarController.swift */,
 			);
 			name = LogIn;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,
 				E12635131FDF01C700FCECBE /* ViewController.swift in Sources */,
 				E12635111FDF01C700FCECBE /* AppDelegate.swift in Sources */,
+				E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */,
 				E12635191FDF01C700FCECBE /* HospitalApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
