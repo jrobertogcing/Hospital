@@ -65,12 +65,13 @@ class NewUserViewController: UIViewController {
                         if ready == "ready" {
                         
                             self.activityIndicator.stopAnimating()
+                            
                             UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                            self.alertGeneral(errorDescrip: "Please check your Email", information: "Required Email-Verification")
+                            
+                            self.alertEmailVerification(email: self.emailTextField.text!)
                         
-                        
-                        }
-                    }
+                        }//End if ready == "ready"
+                    }//End sendEmailVerification function
                     
                 
                 } else  if let error = error {
@@ -138,6 +139,37 @@ func alertGeneral(errorDescrip:String, information: String) {
         
     }
 
+    
+    func alertEmailVerification(email:String) {
+        
+        signUpButton.isEnabled = true
+        signUpButton.isHighlighted = false
+        
+        activityIndicator.stopAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        let message = NSLocalizedString("name.message", comment: "Ready")
+        
+        let alertGeneral = UIAlertController(title: "Required Email-Verification", message: message + " " + email, preferredStyle: .alert)
+        
+        let aceptAction = UIAlertAction(title: "OK", style: .default) { UIAlertAction in
+            
+            print("send to other VC")
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+            self.present(nextViewController, animated:true, completion:nil)
+            
+            nextViewController.emailTextField.text = email
+            
+            
+            
+        }//End Let acceptAction
+        
+        alertGeneral.addAction(aceptAction)
+        present(alertGeneral, animated: true)
+    
+    }// End AlertEmailVerification
    
 
 }// End ViewController

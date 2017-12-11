@@ -86,9 +86,17 @@ class SignInViewController: UIViewController {
                 }//End dataBaseNurse function
 
             
+            } else {
+            
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                //alert this email is notvalidated
+                self.alertEmailNotValidated(email: self.emailTextField.text!)
+            
+            
             }// End ready == true
-        
-        
+            
         }// End singIn function
     
     }// End logInButtonAction
@@ -135,7 +143,7 @@ class SignInViewController: UIViewController {
             
             }// End IF error== nil
             
-        })
+        })//End Auth
         
         
     }// End func signInUser
@@ -226,11 +234,56 @@ class SignInViewController: UIViewController {
         
     }
 
-//MARK: function send to WELCOME NURSE ,
+    func alertEmailNotValidated(email:String) {
+        self.logInButton.isEnabled = true
+        self.newUserButton.isEnabled = true
+        self.resetButton.isEnabled = true
+        
+        //let message = NSLocalizedString("signIn.Message.Veri1", comment: "Ready!")
+       // let button = NSLocalizedString("signIn.Message.Veri2", comment: "Ready!")
+        
+        
+        let alertGeneral = UIAlertController(title: "Required Email-Verification", message: "Check your Email." + " " + email, preferredStyle: .alert)
+        
+        let aceptAction = UIAlertAction(title: "Send another verification Email?", style: .default){ UIAlertAction in
+            
+            
+            // send email verification
+            
+            Auth.auth().currentUser?.sendEmailVerification(completion:
+                {(error) in
+                    if let error = error
+                    {print("error sending email verification")
+                        self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+                        
+                    }
+                    else
+                    {
+                        print("email verification send")
+                        
+                        
+                    }
+            })
+            
+            
+            
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        
+        alertGeneral.addAction(aceptAction)
+        alertGeneral.addAction(cancelAction)
+        
+        present(alertGeneral, animated: true)
+        
+        
+    }
+
+    
+    
+//MARK: function send to Main View ,
     
     func sendToVCNurce(){
-        
-        
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
