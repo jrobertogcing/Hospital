@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class NewUserViewController: UIViewController {
     
@@ -50,9 +52,74 @@ class NewUserViewController: UIViewController {
         return
         }//End Guard let
         
+        if passwordCheck == repeatPassCheck {
+            
+            Auth.auth().createUser(withEmail: nameCheck, password: passwordCheck) { (user, error) in
+             
+                if error == nil {
+                
+                 print("Sign up OK")
+                    
+                    self.sendEmailVerification() { ready in
+                        
+                        if ready == "ready" {
+                        
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                            self.alertGeneral(errorDescrip: "Please check your Email", information: "Required Email-Verification")
+                        
+                        
+                        }
+                    }
+                    
+                
+                } else  if let error = error {
+                
+                    self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+                
+                }// End if error == nil
+                
+                
+            }// End Auth
+                
+            
+            
+        }else {
         
+        
+            alertGeneral(errorDescrip: "The Passwords don't match", information: "Information")
+        
+        } //END passwordCheck == repeatPassCheck
+
         
     }// End function SignUPButtonAction
+    
+    
+// MARK: sendEmailVerification
+    
+func sendEmailVerification(completion: @escaping (String) -> Void) {
+
+    Auth.auth().currentUser?.sendEmailVerification(completion: {(error) in
+        
+        if let error = error{
+            self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+            
+            print("Error sending email verification")
+        }
+        else
+        {
+            print("Email verification send")
+            
+            completion("ready")
+            
+        } //End let error = error
+    }) // End Auth
+    
+}// End sendEmailVerification Function
+    
+    
+
+//MARK : alertGeneral
     
 func alertGeneral(errorDescrip:String, information: String) {
         
