@@ -74,22 +74,22 @@ class SignInViewController: UIViewController {
                     self.sendToVCNurce()
                     
                     
-                    } else {
+                    } else if name == "No" {
                     
-                    
+                    self.activityIndicator.stopAnimating()
                     self.alertGeneral(errorDescrip: "Not registered", information: "Information")
                     
                     
-                    }
+                    } // End If name != ""
                 
                 
-                }
+                }//End dataBaseNurse function
 
             
-            }
+            }// End ready == true
         
         
-        }
+        }// End singIn function
     
     }// End logInButtonAction
     
@@ -105,6 +105,37 @@ class SignInViewController: UIViewController {
             completion(false)
             return
         }
+        
+         Auth.auth().signIn(withEmail: nameText, password: passwordText , completion: {(user, error) in
+            
+            if error == nil {
+            
+                if user?.isEmailVerified == true{
+                    
+                    completion(true)
+                    
+                
+                }else{
+                    
+                    completion(false)
+                    
+                
+                }// End if isEmailVerified
+                
+            
+            
+            } else {
+            
+                if let error = error {
+                    
+                    self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+                
+                
+                }// End If let error = error
+            
+            }// End IF error== nil
+            
+        })
         
         
     }// End func signInUser

@@ -21,6 +21,7 @@
 		E12635421FDF133F00FCECBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E12635411FDF133F00FCECBE /* GoogleService-Info.plist */; };
 		E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635441FDF179F00FCECBE /* SignInViewController.swift */; };
 		E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635461FDF255100FCECBE /* NurseUITabBarController.swift */; };
+		E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD371FDF39590013B207 /* NewUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		E12635411FDF133F00FCECBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E12635441FDF179F00FCECBE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E12635461FDF255100FCECBE /* NurseUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseUITabBarController.swift; sourceTree = "<group>"; };
+		E166BD371FDF39590013B207 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				E12635101FDF01C700FCECBE /* AppDelegate.swift */,
 				E12635121FDF01C700FCECBE /* ViewController.swift */,
 				E12635431FDF174F00FCECBE /* LogIn */,
+				E166BD361FDF38820013B207 /* SignUp */,
 				E12635141FDF01C700FCECBE /* Main.storyboard */,
 				E126351A1FDF01C700FCECBE /* Assets.xcassets */,
 				E126351C1FDF01C700FCECBE /* LaunchScreen.storyboard */,
@@ -173,6 +176,14 @@
 				E12635461FDF255100FCECBE /* NurseUITabBarController.swift */,
 			);
 			name = LogIn;
+			sourceTree = "<group>";
+		};
+		E166BD361FDF38820013B207 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				E166BD371FDF39590013B207 /* NewUserViewController.swift */,
+			);
+			name = SignUp;
 			sourceTree = "<group>";
 		};
 		FA0CC321921BE56A9479412F /* Frameworks */ = {
@@ -474,6 +485,7 @@
 				E12635131FDF01C700FCECBE /* ViewController.swift in Sources */,
 				E12635111FDF01C700FCECBE /* AppDelegate.swift in Sources */,
 				E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */,
+				E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */,
 				E12635191FDF01C700FCECBE /* HospitalApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

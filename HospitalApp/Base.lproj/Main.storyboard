@@ -12,7 +12,6 @@
         <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -95,13 +94,14 @@
                         <outlet property="resetButton" destination="Jzf-RN-upj" id="sXn-SS-bqk"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074.375" y="138.75"/>
         </scene>
-        <!--View Controller-->
+        <!--New User View Controller-->
         <scene sceneID="28u-bg-D0s">
             <objects>
-                <viewController id="XQt-zT-Jan" sceneMemberID="viewController">
+                <viewController id="XQt-zT-Jan" customClass="NewUserViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UKV-LY-hlV"/>
                         <viewControllerLayoutGuide type="bottom" id="oC5-Y0-XUD"/>
@@ -146,6 +146,9 @@
                                 <rect key="frame" x="133" y="347" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonAction:" destination="XQt-zT-Jan" eventType="touchUpInside" id="cNR-T5-PlW"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kIT-w5-csB">
                                 <rect key="frame" x="16" y="309" width="288" height="30"/>
@@ -154,9 +157,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bH6-RV-17U">
+                                <rect key="frame" x="150" y="142" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="bH6-RV-17U" id="j6d-On-pxK"/>
+                        <outlet property="emailTextField" destination="izw-nk-OX9" id="IRT-6L-ogm"/>
+                        <outlet property="passwordTextField" destination="tnV-Tq-BKA" id="Cwo-Ya-NzJ"/>
+                        <outlet property="repeatPassTextField" destination="kIT-w5-csB" id="uD7-Dv-6Kj"/>
+                        <outlet property="signUpButton" destination="tQH-O5-PJp" id="jtS-mg-e0K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppd-FC-6cM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
