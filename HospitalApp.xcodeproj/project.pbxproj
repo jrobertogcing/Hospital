@@ -23,6 +23,9 @@
 		E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635461FDF255100FCECBE /* NurseUITabBarController.swift */; };
 		E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD371FDF39590013B207 /* NewUserViewController.swift */; };
 		E166BD3A1FDF55150013B207 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD391FDF55150013B207 /* NameViewController.swift */; };
+		E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */; };
+		E17402CF1FE05CBE00C1FB99 /* PatientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */; };
+		E17402D01FE05CBE00C1FB99 /* PatientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */; };
 		E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C721FDF804C008A1012 /* NurseViewController.swift */; };
 		E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */; };
 		E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */; };
@@ -74,6 +77,9 @@
 		E12635461FDF255100FCECBE /* NurseUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseUITabBarController.swift; sourceTree = "<group>"; };
 		E166BD371FDF39590013B207 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		E166BD391FDF55150013B207 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
+		E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTableViewCell.swift; sourceTree = "<group>"; };
+		E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientsTableViewCell.xib; sourceTree = "<group>"; };
 		E1FB8C721FDF804C008A1012 /* NurseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseViewController.swift; sourceTree = "<group>"; };
 		E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 			isa = PBXGroup;
 			children = (
 				E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */,
+				E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */,
+				E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */,
+				E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */,
 			);
 			name = AddPatient;
 			sourceTree = "<group>";
@@ -361,6 +370,7 @@
 			files = (
 				E126351E1FDF01C700FCECBE /* LaunchScreen.storyboard in Resources */,
 				E12635421FDF133F00FCECBE /* GoogleService-Info.plist in Resources */,
+				E17402D01FE05CBE00C1FB99 /* PatientsTableViewCell.xib in Resources */,
 				E126351B1FDF01C700FCECBE /* Assets.xcassets in Resources */,
 				E12635161FDF01C700FCECBE /* Main.storyboard in Resources */,
 			);
@@ -530,8 +540,10 @@
 				E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */,
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,
 				E12635131FDF01C700FCECBE /* ViewController.swift in Sources */,
+				E17402CF1FE05CBE00C1FB99 /* PatientsTableViewCell.swift in Sources */,
 				E166BD3A1FDF55150013B207 /* NameViewController.swift in Sources */,
 				E12635111FDF01C700FCECBE /* AppDelegate.swift in Sources */,
+				E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */,
 				E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */,
 				E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */,
 				E12635191FDF01C700FCECBE /* HospitalApp.xcdatamodeld in Sources */,
