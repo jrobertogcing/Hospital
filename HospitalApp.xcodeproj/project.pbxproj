@@ -26,6 +26,8 @@
 		E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */; };
 		E17402CF1FE05CBE00C1FB99 /* PatientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */; };
 		E17402D01FE05CBE00C1FB99 /* PatientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */; };
+		E17402D21FE060CF00C1FB99 /* JSONManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402D11FE060CF00C1FB99 /* JSONManager.swift */; };
+		E17402D41FE0616000C1FB99 /* JSONAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402D31FE0616000C1FB99 /* JSONAdapter.swift */; };
 		E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C721FDF804C008A1012 /* NurseViewController.swift */; };
 		E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */; };
 		E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */; };
@@ -80,6 +82,8 @@
 		E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
 		E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTableViewCell.swift; sourceTree = "<group>"; };
 		E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientsTableViewCell.xib; sourceTree = "<group>"; };
+		E17402D11FE060CF00C1FB99 /* JSONManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONManager.swift; sourceTree = "<group>"; };
+		E17402D31FE0616000C1FB99 /* JSONAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAdapter.swift; sourceTree = "<group>"; };
 		E1FB8C721FDF804C008A1012 /* NurseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseViewController.swift; sourceTree = "<group>"; };
 		E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */,
 				E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */,
 				E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */,
+				E17402D11FE060CF00C1FB99 /* JSONManager.swift */,
+				E17402D31FE0616000C1FB99 /* JSONAdapter.swift */,
 			);
 			name = AddPatient;
 			sourceTree = "<group>";
@@ -536,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */,
+				E17402D41FE0616000C1FB99 /* JSONAdapter.swift in Sources */,
 				E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */,
 				E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */,
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,
@@ -545,6 +552,7 @@
 				E12635111FDF01C700FCECBE /* AppDelegate.swift in Sources */,
 				E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */,
 				E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */,
+				E17402D21FE060CF00C1FB99 /* JSONManager.swift in Sources */,
 				E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */,
 				E12635191FDF01C700FCECBE /* HospitalApp.xcdatamodeld in Sources */,
 			);

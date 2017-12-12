@@ -17,11 +17,26 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
     
 
     var arrayA = ["matute", "thor", "canela pachona y gordita"]
+    var arrayObject :[JSONManager] = []
+    
+    //variables
+    var ref: DatabaseReference!
+    
+    var patientsKeys = [String]()
+    var patientsStatus = [String]()
+    var patientsName = [String]()
+    var patientsLastname = [String]()
+    var patientsTelephone = [String]()
+    var patientsEmail = [String]()
+    var patientsUser = [String]()
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
         patientsTableView.delegate = self
         patientsTableView.dataSource = self
         
@@ -30,6 +45,16 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         patientsTableView.register(nibName, forCellReuseIdentifier: "PatientsTableViewCell")
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        patientsTableView.isUserInteractionEnabled = false
+        
+        //call dataBase JSON and inf not, send Alert No Patients Yet
+        infoTable()
         
     }
 
@@ -38,27 +63,69 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: information for table
+    
+    func infoTable(){
+        
+        patientsKeys.removeAll()
+        patientsStatus.removeAll()
+        patientsName.removeAll()
+        patientsLastname.removeAll()
+        patientsTelephone.removeAll()
+        patientsEmail.removeAll()
+        patientsUser.removeAll()
+        
+        dataBase(){ data in
+            
+            if data  == "ready" {
+                
+                
+                    self.patientsTableView.reloadData()
+                    
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.patientsTableView.isUserInteractionEnabled = true
+                    
+                    
+                
+                
+                
+            } else {print("No patients yet")
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                self.alertGeneral(errorDescrip: "No Patients registered yet!", information: "Information")
+                
+            }
+            
+            
+            
+        }
+        
+        
+    }
+
+    
+    
 //MARK: Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayA.count
+        return patientsName.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-    //let cell = tableViewTours.dequeueReusableCell(withIdentifier: "ToursTableViewCell", for: indexPath)
         
     let cell = patientsTableView.dequeueReusableCell(withIdentifier: "PatientsTableViewCell", for: indexPath)
        
         guard let patientsCell = cell as? PatientsTableViewCell else {return cell}
 
-        //patientsCell.tituloLabelCell.text = arrayA[indexPath.row]
         
-        patientsCell.nameCellLabel.text = arrayA[indexPath.row]
-    
-        
-        
+        patientsCell.nameCellLabel.text = "Name: \(patientsName[indexPath.row])"
+        patientsCell.lastnameCellLabel.text = "Lastname: \(patientsLastname[indexPath.row])"
+        patientsCell.telephoneCellLabel.text = "Telephone: \(patientsTelephone[indexPath.row])"
+        patientsCell.emailCellLabel.text = "Email: \(patientsEmail[indexPath.row])"
         return cell
 
         
@@ -68,8 +135,117 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         return 140
         
     }
-
     
+    
+//MARK: Function Read Data base Patients
+    
+    func dataBase(completion: @escaping (String) -> Void){
+        
+        
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            
+            print("no user auth")
+            
+            return
+        }
+        
+        
+// check in Json "Doctor"
+        let ref = Database.database().reference().child("Nurse").child(userID).child("Patients");
+        
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            
+            // Get user value
+            guard let dataInJSON = snapshot.value as? NSDictionary  else {
+                
+                print("no data in daba base Information")
+                
+                
+                completion("No")
+                
+                return
+            }
+            
+            
+            for everyData in dataInJSON {
+                
+                
+                guard let patientsKey = everyData.key as? String else {
+                    
+                    return
+                }
+                
+                self.patientsKeys.append(patientsKey)
+                
+                guard let patientsValue = everyData.value as? NSDictionary else {
+                    
+                    return
+                }
+                
+                guard let namePatient = patientsValue["name"] as? String else {
+                    
+                    return
+                }
+                guard let lastnamePatient = patientsValue["lastName"] as? String else {
+                    
+                    print("nolast")
+                    return
+                }
+                guard let telephonePatient = patientsValue["telehpone"] as? String else {
+                    print("notel")
+
+                    return
+                }
+                guard let emailPatient = patientsValue["email"] as? String else {
+                    
+                    print("noemail")
+
+                    return
+                }
+                
+                self.patientsName.append(namePatient)
+                self.patientsLastname.append(lastnamePatient)
+                self.patientsTelephone.append(telephonePatient)
+                self.patientsEmail.append(emailPatient)
+
+                
+
+                
+            }// End  for everyData in dataInJSON
+            
+            
+            completion("ready")
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+            self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+            
+        }// end json for Doctor
+        
+    }// end dataBase Function
+
+    //MARK : alertGeneral
+    
+    func alertGeneral(errorDescrip:String, information: String) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        let alertGeneral = UIAlertController(title: information, message: errorDescrip, preferredStyle: .alert)
+        
+        let aceptAction = UIAlertAction(title: "Ok", style: .default)
+        
+        alertGeneral.addAction(aceptAction)
+        present(alertGeneral, animated: true)
+        
+    }
+    
+ 
 
   
-}
+}// End ViewController
