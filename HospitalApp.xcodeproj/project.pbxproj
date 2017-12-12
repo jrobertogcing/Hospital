@@ -32,6 +32,7 @@
 		E17402D91FE06C1100C1FB99 /* MedicinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402D81FE06C1100C1FB99 /* MedicinesViewController.swift */; };
 		E17402DC1FE06C3700C1FB99 /* MedicinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402DA1FE06C3700C1FB99 /* MedicinesTableViewCell.swift */; };
 		E17402DD1FE06C3700C1FB99 /* MedicinesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17402DB1FE06C3700C1FB99 /* MedicinesTableViewCell.xib */; };
+		E18CDDEF1FE09B5300AB14C0 /* DetailsMedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18CDDEE1FE09B5300AB14C0 /* DetailsMedicineViewController.swift */; };
 		E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C721FDF804C008A1012 /* NurseViewController.swift */; };
 		E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */; };
 		E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */; };
@@ -92,6 +93,7 @@
 		E17402D81FE06C1100C1FB99 /* MedicinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicinesViewController.swift; sourceTree = "<group>"; };
 		E17402DA1FE06C3700C1FB99 /* MedicinesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicinesTableViewCell.swift; sourceTree = "<group>"; };
 		E17402DB1FE06C3700C1FB99 /* MedicinesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedicinesTableViewCell.xib; sourceTree = "<group>"; };
+		E18CDDEE1FE09B5300AB14C0 /* DetailsMedicineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsMedicineViewController.swift; sourceTree = "<group>"; };
 		E1FB8C721FDF804C008A1012 /* NurseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseViewController.swift; sourceTree = "<group>"; };
 		E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
@@ -232,8 +234,17 @@
 				E17402D81FE06C1100C1FB99 /* MedicinesViewController.swift */,
 				E17402DA1FE06C3700C1FB99 /* MedicinesTableViewCell.swift */,
 				E17402DB1FE06C3700C1FB99 /* MedicinesTableViewCell.xib */,
+				E18CDDED1FE09B2E00AB14C0 /* DetaildMedicines */,
 			);
 			name = AddMedicine;
+			sourceTree = "<group>";
+		};
+		E18CDDED1FE09B2E00AB14C0 /* DetaildMedicines */ = {
+			isa = PBXGroup;
+			children = (
+				E18CDDEE1FE09B5300AB14C0 /* DetailsMedicineViewController.swift */,
+			);
+			name = DetaildMedicines;
 			sourceTree = "<group>";
 		};
 		E1FB8C711FDF8029008A1012 /* Nurse */ = {
@@ -567,6 +578,7 @@
 				E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */,
 				E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */,
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,
+				E18CDDEF1FE09B5300AB14C0 /* DetailsMedicineViewController.swift in Sources */,
 				E12635131FDF01C700FCECBE /* ViewController.swift in Sources */,
 				E17402CF1FE05CBE00C1FB99 /* PatientsTableViewCell.swift in Sources */,
 				E17402D71FE06BDB00C1FB99 /* AddMedicineViewController.swift in Sources */,
