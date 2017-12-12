@@ -131,16 +131,30 @@ class AddMedicineViewController: UIViewController {
             
             //check if the user exist and get its uid user ID
             
-            if self.allMedicinesName.contains(medicineNameTextSave) {
+           // if self.allMedicinesName.contains(medicineNameTextSave) {
                 
-                print("iguales")
-                completion("Found")
+                // Chek if the medicine exist, caseInsensitive
+                let searchToSearch = medicineNameTextSave
+
+                let itemExists = self.allMedicinesName.contains(where: {
+                    $0.range(of: searchToSearch, options: .caseInsensitive) != nil
+                })
+                
+            if itemExists == true {
+                
+                    print("iguales")
+                    completion("Found")
+                
                 
             } else {
                 
                 completion("NotFound")
                 
             }// End if self.allMedicinesName.contains
+            
+            //test
+            
+           
         
         }) { (error) in
             print(error.localizedDescription)
