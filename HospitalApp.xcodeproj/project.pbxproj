@@ -143,8 +143,8 @@
 				E12635121FDF01C700FCECBE /* ViewController.swift */,
 				E12635431FDF174F00FCECBE /* LogIn */,
 				E166BD361FDF38820013B207 /* SignUp */,
+				E166BD3B1FDF65460013B207 /* NameRegistration */,
 				E12635141FDF01C700FCECBE /* Main.storyboard */,
-				E166BD391FDF55150013B207 /* NameViewController.swift */,
 				E126351A1FDF01C700FCECBE /* Assets.xcassets */,
 				E126351C1FDF01C700FCECBE /* LaunchScreen.storyboard */,
 				E126351F1FDF01C700FCECBE /* Info.plist */,
@@ -187,6 +187,14 @@
 				E166BD371FDF39590013B207 /* NewUserViewController.swift */,
 			);
 			name = SignUp;
+			sourceTree = "<group>";
+		};
+		E166BD3B1FDF65460013B207 /* NameRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				E166BD391FDF55150013B207 /* NameViewController.swift */,
+			);
+			name = NameRegistration;
 			sourceTree = "<group>";
 		};
 		FA0CC321921BE56A9479412F /* Frameworks */ = {

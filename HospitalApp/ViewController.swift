@@ -20,25 +20,5 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-   /*
-    if name != "No" || name == "NoRegister"  {
-    
-    if name != "NoName"{
-    //send to Main View
-    self.sendToVCNurse()
-    
-    } else {
-    
-    //send to name and Last name registration
-    self.sendToVCName()
-    }//End name != ""
-    
-    } else if name == "No" {
-    
-    self.activityIndicator.stopAnimating()
-    self.alertGeneral(errorDescrip: "Not registered", information: "Information")
-    
-    } // End If name != ""
-*/
 }
 

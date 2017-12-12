@@ -287,6 +287,9 @@ class SignInViewController: UIViewController {
     
     func sendToVCNurse(){
         
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NurseUITabBarController") as! NurseUITabBarController
@@ -297,6 +300,9 @@ class SignInViewController: UIViewController {
     
     
     func sendToVCName()   {
+        
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         

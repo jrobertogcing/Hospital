@@ -7,14 +7,48 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class NameViewController: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var lastnameTextField: UITextField!
+    
+    @IBOutlet weak var nextButton: UIButton!
+    
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var userSignInLabel: UILabel!
+    
+    
+    //Variable for saveData
+    var ref: DatabaseReference!
+    var userSignIn = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+        
+        
+        //check if the user is online
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+                if let user = user {
+                
+                    print("User is signed in.")
+                
+                    self.userSignInLabel.text = user.email
+                
+                    self.userSignIn = user.email!
+                
+                } else {
+                self.userSignInLabel.text = "no user online"
+                }// Endif let user = user
+            }//End Auth
+    } //End viewDidLoad
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -22,5 +56,91 @@ class NameViewController: UIViewController {
     }
     
 
+    @IBAction func nextButtonAction(_ sender: UIButton) {
+        
+        activityIndicator.startAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        nextButton.isEnabled = false
+
+        
+        
+        
+    }//End nextButtonAction
     
-}
+    
+    //MARK: function Save data
+    
+    
+    func saveData(completion: @escaping (String) -> Void)  {
+        
+        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text, userNameTextSave != "", userLastNameSave != "" else{
+            
+            alertGeneral(errorDescrip: "Fill all the Fields", information: "Information")
+            return
+        }
+        
+        
+        ref = Database.database().reference().child("Nurse")
+        
+        
+        let key = ref.childByAutoId().key
+        
+        let userDetails = [
+            "user" : userSignIn,
+            "id":key,
+            "name" : userNameTextSave,
+            "lastName" : userLastNameSave,
+            ]
+        
+        
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            
+            return
+        }
+        
+        //ref.child(userID).setValue(userDetails)
+        ref.child(userID).setValue(userDetails){ (error, ref) -> Void in
+            //    ref.child(userID).setValue(userDetails, withCompletionBlock: { (error, snapshot) in
+            
+            if error == nil {
+                //print("write done")
+                print("ready")
+                print(ref)
+                completion("ready")
+                
+            } else if let error = error  {
+                
+                // alert general.
+                self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+                
+                
+            }
+        }
+        
+
+        
+        
+    }// End saveData Function
+    
+    //MARK: Alert
+    
+    func alertGeneral(errorDescrip:String, information: String) {
+        
+        
+        self.nextButton.isEnabled = true
+        
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        let alertGeneral = UIAlertController(title: information, message: errorDescrip, preferredStyle: .alert)
+        
+        let aceptAction = UIAlertAction(title: "Ok", style: .default)
+        
+        alertGeneral.addAction(aceptAction)
+        present(alertGeneral, animated: true)
+        
+        
+    }
+    
+}// End ViewController
