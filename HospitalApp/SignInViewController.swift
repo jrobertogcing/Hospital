@@ -26,7 +26,11 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     
     
-    
+    enum RegistrationStatus {
+        case noRegister
+        case no
+        case noName
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,20 +73,18 @@ class SignInViewController: UIViewController {
                 
                 self.dataBaseNurse() { name, lastName in
                 
-                    if name != "" {
+                    if name == "NoRegister" || name == "NoName" {
                     
-                    self.sendToVCNurce()
+                      
+                        self.sendToVCName()
+                    
+                    } else {
+                    
+                        self.sendToVCNurse()
+                    
+                    }//End if name == "NoRegister" || name == "No"
                     
                     
-                    } else if name == "No" {
-                    
-                    self.activityIndicator.stopAnimating()
-                    self.alertGeneral(errorDescrip: "Not registered", information: "Information")
-                    
-                    
-                    } // End If name != ""
-                
-                
                 }//End dataBaseNurse function
 
             
@@ -162,7 +164,7 @@ class SignInViewController: UIViewController {
         
         
         // check in Json "Doctor"
-        let ref = Database.database().reference().child("Nurce").child(userID);
+        let ref = Database.database().reference().child("Nurse").child(userID);
         
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -174,21 +176,21 @@ class SignInViewController: UIViewController {
                 print("no data in daba base Doctor")
                 
                 
-                completion("No", "No")
+                completion("NoRegister", "NoRegister")
                 
                 return
             }
             
             guard let name = dataInJSON["name"]  else {
                 
-                completion("No", "No")
+                completion("NoName", "NoName")
                 return
             }
             
             
             guard let lastName = dataInJSON["lastName"]  else {
                 
-                completion("No", "No")
+                completion("NoLastName", "NoLastName")
                 return
             }
             
@@ -283,7 +285,7 @@ class SignInViewController: UIViewController {
     
 //MARK: function send to Main View ,
     
-    func sendToVCNurce(){
+    func sendToVCNurse(){
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
@@ -292,6 +294,19 @@ class SignInViewController: UIViewController {
         
         
     }
+    
+    
+    func sendToVCName()   {
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NameViewController") as! NameViewController
+        self.present(nextViewController, animated:true, completion:nil)
+        
+        
+        
+        
+    }// end func SendToVC
     
 
 }// End ViewController

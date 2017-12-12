@@ -483,10 +483,10 @@
             </objects>
             <point key="canvasLocation" x="5837" y="1644"/>
         </scene>
-        <!--View Controller-->
+        <!--Name View Controller-->
         <scene sceneID="doL-YH-7BO">
             <objects>
-                <viewController id="nif-xI-wJX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NameViewController" id="nif-xI-wJX" customClass="NameViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6LC-GE-Fog"/>
                         <viewControllerLayoutGuide type="bottom" id="fGX-IZ-H2v"/>
