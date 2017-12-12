@@ -62,7 +62,20 @@ class NameViewController: UIViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         nextButton.isEnabled = false
 
+        saveData(){ ready in
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            // send to the next NurseUIViewController
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NurseUITabBarController") as! NurseUITabBarController
+            self.present(nextViewController, animated:true, completion:nil)
         
+        
+        }
         
         
     }//End nextButtonAction
