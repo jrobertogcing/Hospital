@@ -27,7 +27,7 @@ class AddPatientViewController: UIViewController {
     //Variable for saveData
     var ref: DatabaseReference!
     
-    var allNurseKeys = [String]()
+    var allPatientEmail = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,7 @@ class AddPatientViewController: UIViewController {
         
         checkPatientDataBase(){ data in
             
+            print(data)
             if data == "NotFound" {
                 self.saveData() {  ready in
         
@@ -57,8 +58,15 @@ class AddPatientViewController: UIViewController {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
                     if  ready == "ready" {
-            
-                        self.alertGeneral(errorDescrip: "You have added a new Patient", information: "Information")
+                        
+                        guard let emailUser = self.emailTextField.text else {
+                        return
+                        }
+                        self.alertGeneral(errorDescrip: "You have added a new Patient: \(emailUser)", information: "Information")
+                        self.nameTextField.text = ""
+                        self.lastnameTextField.text = ""
+                        self.telephoneTextField.text = ""
+                        self.emailTextField.text = ""
             
                     }//End if  ready == "ready"
                 }//End saveData Function
@@ -185,34 +193,63 @@ class AddPatientViewController: UIViewController {
                     print("here1")
                     print(valuesKey)
                     
-                    for everyData2  in valuesKey {
-                        guard let values2 = everyData2.value as? NSDictionary else {
                     
-                            return
+                    for everyEmail in valuesKey {
+                    
+                        guard let userEmailNSDictionary = everyEmail.value as? NSDictionary else {
+                        
+                        return
+                        }
+                    
+                        print("Emails")
+                        print(userEmailNSDictionary)
+                        
+                        guard let userEmail = userEmailNSDictionary["email"] as? String else {
+                        
+                        
+                        return
                         }
                         
-                        guard let userEmail = values2["email"] as? String else {
-                            
-                            return
-                        }
-
-                        //check if the user exist and get its uid user ID
-                        if userEmail == userEmailTextSave {
-                            
-                            
-                            completion("Found")
-                            
-                        }
-                    }
-
-                   
+                        //we add all the emails to Array
+                        self.allPatientEmail.append(userEmail)
+                        
+                    }// END For for everyEmail in valuesKey
                     
+  
                     
                }// END FOR 1
                 
+                //check if the user exist and get its uid user ID
+                
+                if self.allPatientEmail.contains(userEmailTextSave) {
+                
+                    print("iguales")
+                    completion("Found")
+                    
+                } else {
+                    
+                    completion("NotFound")
+                    
+                }
                 
                 
-                completion("NotFound")
+                
+                /*
+                if userEmail == userEmailTextSave {
+                    
+                    print("iguales")
+                    completion("Found")
+                    
+                } else {
+                    
+                    completion("NotFound")
+                    
+                }
+
+                */
+                
+                
+                //completion("NotFound")
                 
                 
             }) { (error) in
