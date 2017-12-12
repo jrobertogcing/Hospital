@@ -27,6 +27,7 @@ class AddPatientViewController: UIViewController {
     //Variable for saveData
     var ref: DatabaseReference!
     
+    var allNurseKeys = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +46,28 @@ class AddPatientViewController: UIViewController {
         activityIndicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         addPatientButton.isEnabled = false
+        // check first if the patient is registered
         
-        saveData() {  ready in
+        checkPatientDataBase(){ data in
+            
+            if data == "NotFound" {
+                self.saveData() {  ready in
         
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
-            if  ready == "ready" {
+                    if  ready == "ready" {
             
-                self.alertGeneral(errorDescrip: "You have added a new Patient", information: "Information")
+                        self.alertGeneral(errorDescrip: "You have added a new Patient", information: "Information")
             
-            }
-        
-        }
+                    }//End if  ready == "ready"
+                }//End saveData Function
+            }else if data == "Found"{
+            
+                self.alertGeneral(errorDescrip: "This patient is already register", information: "Information")
+                
+            }//End if if data == "NotFound"
+        }// End checkPatientDataBase Function
         
     }//End addPatientButtonAction
 
@@ -93,6 +103,28 @@ class AddPatientViewController: UIViewController {
         ref.child("Patients").child(key).setValue(userDetails){ (error, ref) -> Void in
             
             if error == nil {
+                //completion("ready")
+            } else if let error = error  {
+                
+                // alert general.
+                self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+            }// End  if error == nil
+        }// End ref.child
+        
+        
+        // save also in Patients
+        
+        ref = Database.database().reference().child("Patients")
+        
+        let userDetails2 = [
+            
+            "email": userEmailTextSave
+        ]
+        // ref.setValue(userDetails)
+        
+        ref.child(userID).child(key).setValue(userDetails2){ (error, ref) -> Void in
+            
+            if error == nil {
                 completion("ready")
             } else if let error = error  {
                 
@@ -100,8 +132,99 @@ class AddPatientViewController: UIViewController {
                 self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
             }// End  if error == nil
         }// End ref.child
+
     }// End saveData Function
 
+    
+//MARK: Function check patients registered
+    
+    func checkPatientDataBase(completion: @escaping (String) -> Void)  {
+        
+        
+        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text,  let userTelephoneTextSave = telephoneTextField.text,  let userEmailTextSave = emailTextField.text, userNameTextSave != "", userLastNameSave != "" , userTelephoneTextSave != "", userEmailTextSave != "" else{
+            
+            alertGeneral(errorDescrip: "Fill all the Fields", information: "Information")
+            return
+        }// End guard let
+            
+        //read Patient JSON
+            let refPat = Database.database().reference().child("Patients");
+            
+            
+            refPat.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                // Get user value
+                guard let dataInJSON = snapshot.value as? NSDictionary  else {
+                    
+                    print("no data in daba base Patient")
+                    completion("NotFound")
+                    // by this part we know that doctor not exist so we send to Name VC
+                    
+                    
+                    return
+                }
+                
+                
+                
+                for everyData in dataInJSON {
+                    
+                   // guard let uidKey = everyData.key as? String else {
+                        
+                     //   return
+                   // }
+                    
+                   // self.allNurseKeys.append(uidKey)
+                    
+                    
+                    
+                    guard let valuesKey = everyData.value as? NSDictionary else {
+                        
+                        return
+                    }
+                    
+                    print("here1")
+                    print(valuesKey)
+                    
+                    for everyData2  in valuesKey {
+                        guard let values2 = everyData2.value as? NSDictionary else {
+                    
+                            return
+                        }
+                        
+                        guard let userEmail = values2["email"] as? String else {
+                            
+                            return
+                        }
+
+                        //check if the user exist and get its uid user ID
+                        if userEmail == userEmailTextSave {
+                            
+                            
+                            completion("Found")
+                            
+                        }
+                    }
+
+                   
+                    
+                    
+               }// END FOR 1
+                
+                
+                
+                completion("NotFound")
+                
+                
+            }) { (error) in
+                print(error.localizedDescription)
+                self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+                
+            }// end json for Patient
+            
+        
+    }// End func checkPatientDataBase
+
+    
 //MARK: Alert
     
     func alertGeneral(errorDescrip:String, information: String) {
