@@ -176,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="1072.5" y="1027.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Reset Password View Controller-->
         <scene sceneID="W7h-z8-k0Z">
             <objects>
-                <viewController id="VXb-wV-06p" sceneMemberID="viewController">
+                <viewController id="VXb-wV-06p" customClass="ResetPasswordViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ICH-nV-Ldo"/>
                         <viewControllerLayoutGuide type="bottom" id="Xfy-8h-B0q"/>
@@ -193,16 +193,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TVo-tw-ZI9">
-                                <rect key="frame" x="16" y="173" width="288" height="30"/>
+                                <rect key="frame" x="16" y="192" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVR-8Y-frF">
-                                <rect key="frame" x="137" y="211" width="46" height="30"/>
+                                <rect key="frame" x="137" y="223" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButtonAction:" destination="VXb-wV-06p" eventType="touchUpInside" id="7pQ-uF-KhP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset your Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBc-jN-ygl">
                                 <rect key="frame" x="80" y="135" width="160" height="21"/>
@@ -211,9 +214,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cXt-U9-ExQ">
+                                <rect key="frame" x="150" y="164" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="activityAnimator" destination="cXt-U9-ExQ" id="rSa-0a-QbG"/>
+                        <outlet property="emailTextField" destination="TVo-tw-ZI9" id="umt-A3-H7J"/>
+                        <outlet property="resetButton" destination="hVR-8Y-frF" id="gjg-cq-oVn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fa-Jx-MPy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,7 +285,7 @@
         <!--Item-->
         <scene sceneID="oGF-Fe-XwL">
             <objects>
-                <viewController id="DR6-Qr-MRX" sceneMemberID="viewController">
+                <viewController id="DR6-Qr-MRX" customClass="NurseUITabBarController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VSM-bx-7Dj"/>
                         <viewControllerLayoutGuide type="bottom" id="FYK-hj-fNB"/>

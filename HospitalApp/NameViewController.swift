@@ -72,10 +72,13 @@ class NameViewController: UIViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NurseUITabBarController") as! NurseUITabBarController
+                        
             self.present(nextViewController, animated:true, completion:nil)
+            
         
         
-        }
+        }//End SaveData Function
+        
         
         
     }//End nextButtonAction
