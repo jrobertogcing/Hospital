@@ -64,7 +64,7 @@ class NurseViewController: UIViewController {
             print("no user auth")
             
             return
-        }
+        }//End guard let userID
         
         
         // check in Json "Doctor"
@@ -83,7 +83,7 @@ class NurseViewController: UIViewController {
                 completion("No")
                 
                 return
-            }
+            }// End guard let dataINJSON
             
             
             
@@ -119,9 +119,7 @@ class NurseViewController: UIViewController {
             
             
             self.numberOfPatients = patients.count
-            
-           // print("patients count")
-           // print(patients.count)
+           
             
             self.numberPatientsLabel.text = String(patients.count)
             
@@ -138,7 +136,7 @@ class NurseViewController: UIViewController {
             
         }// end json for Doctor
         
-    }
+    }// End dataBase function
 
 //MARK: Alerts
     

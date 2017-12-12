@@ -114,8 +114,6 @@ class NameViewController: UIViewController {
         ref.child(userID).setValue(userDetails){ (error, ref) -> Void in
             
             if error == nil {
-                print("ready")
-                print(ref)
                 completion("ready")
                 
             } else if let error = error  {

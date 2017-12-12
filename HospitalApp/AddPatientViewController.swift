@@ -64,37 +64,36 @@ class AddPatientViewController: UIViewController {
 //MARK: function Save data
     func saveData(completion: @escaping (String) -> Void)  {
         
-        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text,  let telephoneTextSave = telephoneTextField.text,  let emailTextSave = emailTextField.text, userNameTextSave != "", userLastNameSave != "" , telephoneTextSave != "", emailTextSave != "" else{
+        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text,  let userTelephoneTextSave = telephoneTextField.text,  let userEmailTextSave = emailTextField.text, userNameTextSave != "", userLastNameSave != "" , userTelephoneTextSave != "", userEmailTextSave != "" else{
             
             alertGeneral(errorDescrip: "Fill all the Fields", information: "Information")
             return
         }// End guard let
         
-        
-        ref = Database.database().reference().child("Nurse").child("Patient")
-        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            
+            print("no user auth")
+            
+            return
+        }
+
+        ref = Database.database().reference().child("Nurse").child(userID)
         
         let key = ref.childByAutoId().key
         
         let userDetails = [
-            
             "id":key,
             "name" : userNameTextSave,
             "lastName" : userLastNameSave,
+            "telehpone" : userTelephoneTextSave,
+            "email": userEmailTextSave
             ]
-        
-        guard let userID = Auth.auth().currentUser?.uid else {
-            
-            return
-        }// End guard let userID
-        
-        ref.child(userID).setValue(userDetails){ (error, ref) -> Void in
+       // ref.setValue(userDetails)
+
+        ref.child("Patients").child(key).setValue(userDetails){ (error, ref) -> Void in
             
             if error == nil {
-                print("ready")
-                print(ref)
                 completion("ready")
-                
             } else if let error = error  {
                 
                 // alert general.
