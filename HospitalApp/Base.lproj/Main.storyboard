@@ -450,7 +450,7 @@
         <!--Add Medicine-->
         <scene sceneID="Tzm-rb-Ng2">
             <objects>
-                <viewController id="nfz-Az-ipN" sceneMemberID="viewController">
+                <viewController id="nfz-Az-ipN" customClass="AddMedicineViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B1U-gv-UYB"/>
                         <viewControllerLayoutGuide type="bottom" id="SXr-r0-YwO"/>
@@ -480,20 +480,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77Y-Sz-bkf">
-                                <rect key="frame" x="212" y="129" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="List"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45r-tY-smx">
-                                <rect key="frame" x="48" y="129" width="46" height="30"/>
+                                <rect key="frame" x="137" y="129" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addMedicineButtonAction:" destination="nfz-Az-ipN" eventType="touchUpInside" id="kwh-lm-ZeP"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1nr-DA-tcR">
+                                <rect key="frame" x="150" y="60" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Medicine" id="9yY-aj-Kcx"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="1nr-DA-tcR" id="kyQ-8a-Tp8"/>
+                        <outlet property="addMedicineButton" destination="45r-tY-smx" id="Jg3-XI-zVW"/>
+                        <outlet property="nameMedicineLabel" destination="Bld-Ye-HZJ" id="eE4-M0-wCF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXB-I2-2mN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
