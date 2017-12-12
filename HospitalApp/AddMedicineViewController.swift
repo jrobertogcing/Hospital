@@ -24,6 +24,8 @@ class AddMedicineViewController: UIViewController {
     //Variable for saveData
     var ref: DatabaseReference!
     
+    var allMedicinesName = [String]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +47,10 @@ class AddMedicineViewController: UIViewController {
         // check first if the patient is registered
         checkMedicineDataBase() {data in
             
+            
             if data == "NotFound" {
                 
                 self.saveData() { ready in
-                    
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     
@@ -57,8 +59,8 @@ class AddMedicineViewController: UIViewController {
                         guard let emailUser = self.nameMedicineLabel.text else {
                             return
                         }
-                        self.alertGeneral(errorDescrip: "You have added a new Patient: \(emailUser)", information: "Information")
-                       // self.nameTextField.text = ""
+                        self.alertGeneral(errorDescrip: "You have added a new Medicine: \(emailUser)", information: "Information")
+                        self.nameMedicineLabel.text = ""
                        // self.lastnameTextField.text = ""
                        // self.telephoneTextField.text = ""
                        // self.emailTextField.text = ""
@@ -70,7 +72,7 @@ class AddMedicineViewController: UIViewController {
             }else if data == "Found"{
             
             
-            self.alertGeneral(errorDescrip: "This patient is already register", information: "Information")
+            self.alertGeneral(errorDescrip: "This medicine is already register", information: "Information")
             
             }//End if data == "NotFound"
            
@@ -115,59 +117,21 @@ class AddMedicineViewController: UIViewController {
                     return
                 }
                 
-                print("here1")
-                print(valuesKey)
                 
-            }
-            /*
-            for everyData in dataInJSON {
+                guard let nameMedicine = valuesKey["name"] as? String else {
                 
-                // guard let uidKey = everyData.key as? String else {
-                
-                //   return
-                // }
-                
-                // self.allNurseKeys.append(uidKey)
-                
-                
-                
-                guard let valuesKey = everyData.value as? NSDictionary else {
-                    
                     return
                 }
                 
-                print("here1")
-                print(valuesKey)
-                
-                
-                for everyEmail in valuesKey {
-                    
-                    guard let userEmailNSDictionary = everyEmail.value as? NSDictionary else {
-                        
-                        return
-                    }
-                    
-                    print("Emails")
-                    print(userEmailNSDictionary)
-                    
-                    guard let userEmail = userEmailNSDictionary["email"] as? String else {
-                        
-                        
-                        return
-                    }
-                    
-                    //we add all the emails to Array
-                    self.allPatientEmail.append(userEmail)
-                    
-                }// END For for everyEmail in valuesKey
-                
-                
-                
-            }// END FOR 1
+                //we add all the emails to Array
+                self.allMedicinesName.append(nameMedicine)
+
+            
+            } //End for everyData in dataInJSON
             
             //check if the user exist and get its uid user ID
             
-            if self.allPatientEmail.contains(userEmailTextSave) {
+            if self.allMedicinesName.contains(medicineNameTextSave) {
                 
                 print("iguales")
                 completion("Found")
@@ -176,22 +140,13 @@ class AddMedicineViewController: UIViewController {
                 
                 completion("NotFound")
                 
-            }
-            
-            
-            
- 
-            //completion("NotFound")
-            
-            */
-            
-            completion("NotFound")
+            }// End if self.allMedicinesName.contains
+        
         }) { (error) in
             print(error.localizedDescription)
             self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
             
-        }// end json for Patient
-        
+            }// end json for Patient
         
     }// End func checkPatientDataBase
 
@@ -220,7 +175,7 @@ class AddMedicineViewController: UIViewController {
         ref.child(key).setValue(userDetails){ (error, ref) -> Void in
             
             if error == nil {
-                //completion("ready")
+                completion("ready")
             } else if let error = error  {
                 
                 // alert general.
