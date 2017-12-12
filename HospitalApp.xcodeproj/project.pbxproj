@@ -25,6 +25,7 @@
 		E166BD3A1FDF55150013B207 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD391FDF55150013B207 /* NameViewController.swift */; };
 		E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C721FDF804C008A1012 /* NurseViewController.swift */; };
 		E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */; };
+		E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		E166BD391FDF55150013B207 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E1FB8C721FDF804C008A1012 /* NurseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseViewController.swift; sourceTree = "<group>"; };
 		E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				E1FB8C741FDF816B008A1012 /* ResetPassword */,
 				E166BD3B1FDF65460013B207 /* NameRegistration */,
 				E1FB8C711FDF8029008A1012 /* Nurse */,
+				E1FB8C771FDF9598008A1012 /* AddPatient */,
 				E12635141FDF01C700FCECBE /* Main.storyboard */,
 				E126351A1FDF01C700FCECBE /* Assets.xcassets */,
 				E126351C1FDF01C700FCECBE /* LaunchScreen.storyboard */,
@@ -217,6 +220,14 @@
 				E1FB8C751FDF818F008A1012 /* ResetPasswordViewController.swift */,
 			);
 			name = ResetPassword;
+			sourceTree = "<group>";
+		};
+		E1FB8C771FDF9598008A1012 /* AddPatient */ = {
+			isa = PBXGroup;
+			children = (
+				E1FB8C781FDF95BC008A1012 /* AddPatientViewController.swift */,
+			);
+			name = AddPatient;
 			sourceTree = "<group>";
 		};
 		FA0CC321921BE56A9479412F /* Frameworks */ = {
@@ -514,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */,
 				E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */,
 				E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */,
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,

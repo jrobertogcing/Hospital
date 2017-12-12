@@ -1,5 +1,5 @@
 //
-//  NameViewController.swift
+//  AddPatientViewController.swift
 //  HospitalApp
 //
 //  Created by Robert on 11/12/17.
@@ -7,100 +7,77 @@
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseAuth
 
-class NameViewController: UIViewController {
-
+class AddPatientViewController: UIViewController {
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var lastnameTextField: UITextField!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var telephoneTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var userSignInLabel: UILabel!
-    
+    @IBOutlet weak var addPatientButton: UIButton!
     
     //Variable for saveData
     var ref: DatabaseReference!
-    var userSignIn = ""
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        //check if the user is online
-        
-        Auth.auth().addStateDidChangeListener { auth, user in
-                if let user = user {
-                
-                    print("User is signed in.")
-                
-                    self.userSignInLabel.text = user.email
-                
-                    self.userSignIn = user.email!
-                
-                } else {
-                self.userSignInLabel.text = "no user online"
-                }// Endif let user = user
-            }//End Auth
-    } //End viewDidLoad
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//MARK: nextButtonAction
-    
-    @IBAction func nextButtonAction(_ sender: UIButton) {
-        
+    @IBAction func addPatientButtonAction(_ sender: UIButton) {
+       
         activityIndicator.startAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        nextButton.isEnabled = false
-
-        saveData(){ ready in
-            
+        addPatientButton.isEnabled = false
+        
+        saveData() {  ready in
+        
             self.activityIndicator.stopAnimating()
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
-            // send to the next NurseUIViewController
+            if  ready == "ready" {
             
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                self.alertGeneral(errorDescrip: "You have added a new Patient", information: "Information")
             
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NurseUITabBarController") as! NurseUITabBarController
-                        
-            self.present(nextViewController, animated:true, completion:nil)
-            
+            }
         
+        }
         
-        }//End SaveData Function
-        
-        
-        
-    }//End nextButtonAction
-    
-    
+    }//End addPatientButtonAction
+
 //MARK: function Save data
     func saveData(completion: @escaping (String) -> Void)  {
         
-        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text, userNameTextSave != "", userLastNameSave != "" else{
+        guard let userNameTextSave = nameTextField.text, let userLastNameSave = lastnameTextField.text,  let telephoneTextSave = telephoneTextField.text,  let emailTextSave = emailTextField.text, userNameTextSave != "", userLastNameSave != "" , telephoneTextSave != "", emailTextSave != "" else{
             
             alertGeneral(errorDescrip: "Fill all the Fields", information: "Information")
             return
         }// End guard let
         
         
-        ref = Database.database().reference().child("Nurse")
+        ref = Database.database().reference().child("Nurse").child("Patient")
         
         
         let key = ref.childByAutoId().key
         
         let userDetails = [
-            "user" : userSignIn,
+            
             "id":key,
             "name" : userNameTextSave,
             "lastName" : userLastNameSave,
@@ -125,13 +102,13 @@ class NameViewController: UIViewController {
             }// End  if error == nil
         }// End ref.child
     }// End saveData Function
-    
+
 //MARK: Alert
     
     func alertGeneral(errorDescrip:String, information: String) {
         
         
-        self.nextButton.isEnabled = true
+        self.addPatientButton.isEnabled = true
         
         self.activityIndicator.stopAnimating()
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -145,5 +122,5 @@ class NameViewController: UIViewController {
         
         
     }
-    
-}// End ViewController
+
+}//End ViewController
