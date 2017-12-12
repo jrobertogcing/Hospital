@@ -129,10 +129,9 @@ class AddMedicineViewController: UIViewController {
             
             } //End for everyData in dataInJSON
             
-            //check if the user exist and get its uid user ID
+            //check if the medicine exist and get its uid user ID
             
-           // if self.allMedicinesName.contains(medicineNameTextSave) {
-                
+            
                 // Chek if the medicine exist, caseInsensitive
                 let searchToSearch = medicineNameTextSave
 
@@ -142,7 +141,6 @@ class AddMedicineViewController: UIViewController {
                 
             if itemExists == true {
                 
-                    print("iguales")
                     completion("Found")
                 
                 

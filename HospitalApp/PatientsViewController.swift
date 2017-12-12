@@ -230,7 +230,7 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         
     }// end dataBase Function
 
-    //MARK : alertGeneral
+//MARK : alertGeneral
     
     func alertGeneral(errorDescrip:String, information: String) {
         

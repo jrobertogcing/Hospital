@@ -509,7 +509,7 @@
         <!--Medicines-->
         <scene sceneID="fRM-4b-QDY">
             <objects>
-                <viewController id="ZSk-JY-MYp" sceneMemberID="viewController">
+                <viewController id="ZSk-JY-MYp" customClass="MedicinesViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mnf-IG-LoJ"/>
                         <viewControllerLayoutGuide type="bottom" id="OIk-6O-Vbt"/>
@@ -534,6 +534,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Medicines" id="BsN-5K-ifh"/>
+                    <connections>
+                        <outlet property="medicinesTableView" destination="Zkh-8y-JgW" id="1sC-BZ-Duz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1M-NH-dyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
