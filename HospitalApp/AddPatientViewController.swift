@@ -50,7 +50,6 @@ class AddPatientViewController: UIViewController {
         
         checkPatientDataBase(){ data in
             
-            print(data)
             if data == "NotFound" {
                 self.saveData() {  ready in
         
@@ -170,9 +169,7 @@ class AddPatientViewController: UIViewController {
                     
                     
                     return
-                }
-                
-                
+                }// End guard let dataInJSON
                 
                 for everyData in dataInJSON {
                     
@@ -190,8 +187,6 @@ class AddPatientViewController: UIViewController {
                         return
                     }
                     
-                    print("here1")
-                    print(valuesKey)
                     
                     
                     for everyEmail in valuesKey {
@@ -230,26 +225,7 @@ class AddPatientViewController: UIViewController {
                     
                     completion("NotFound")
                     
-                }
-                
-                
-                
-                /*
-                if userEmail == userEmailTextSave {
-                    
-                    print("iguales")
-                    completion("Found")
-                    
-                } else {
-                    
-                    completion("NotFound")
-                    
-                }
-
-                */
-                
-                
-                //completion("NotFound")
+                }//End  if self.allPatientEmail.contains(userEmailTextSave)
                 
                 
             }) { (error) in
