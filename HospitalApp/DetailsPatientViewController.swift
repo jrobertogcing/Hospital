@@ -62,7 +62,7 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
 //MARK: Table ViewController
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayA.count
+        return medicineBaseArray.count
     }
     
     
@@ -72,8 +72,13 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
         
         guard let medicationCell = cell as? MedicationTableViewCell else {return cell}
         
-        medicationCell.nameMedicineLabel.text = arrayA[indexPath.row]
+        medicationCell.nameMedicineLabel.text = medicineBaseArray[indexPath.row]
+        medicationCell.dosageLabel.text = dosageBaseArray[indexPath.row]
+        medicationCell.scheduleTimeLabel.text = scheduleBaseArray[indexPath.row]
         
+        medicationCell.priorityLabel.text = String(priorityBaseArray[indexPath.row])
+        medicationCell.typeDosageLabel.text = String(typeDosageBaseArray[indexPath.row])
+
         
         return cell
         
@@ -126,7 +131,7 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
-                self.alertGeneral(errorDescrip: "No Patients registered yet!", information: "Information")
+                self.alertGeneral(errorDescrip: "No medication registered yet!", information: "Information")
                 
             }//End if data  == "ready"
         }//End call dataBase function
@@ -187,7 +192,6 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
                 }
                 
                 guard let priorityBase = patientsValue["priority"] as? Int else {
-                    print("no dosageprio")
 
                     return
                 }
