@@ -316,6 +316,7 @@
                         <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="medicationTableView" destination="Jcs-Hg-srH" id="7ql-AP-ruH"/>
                         <outlet property="patientNameLabel" destination="eXX-f5-cUr" id="bLD-5K-yK3"/>
                     </connections>
                 </viewController>
@@ -323,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="6189.375" y="857.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Assign Medicine View Controller-->
         <scene sceneID="dq0-4u-yht">
             <objects>
-                <viewController id="Keh-d3-zZQ" sceneMemberID="viewController">
+                <viewController id="Keh-d3-zZQ" customClass="AssignMedicineViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J9f-ux-p64"/>
                         <viewControllerLayoutGuide type="bottom" id="MHc-ZQ-0Ol"/>
@@ -412,11 +413,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOk-HB-n9H">
+                                <rect key="frame" x="97" y="515" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Assign Medication"/>
+                                <connections>
+                                    <action selector="assignButtonAction:" destination="Keh-d3-zZQ" eventType="touchUpInside" id="yfF-in-rBk"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="600"/>
+                    <connections>
+                        <outlet property="assignMedicationButton" destination="hOk-HB-n9H" id="HbS-dV-ukC"/>
+                        <outlet property="dosageTextField" destination="y0Z-Me-iWf" id="75R-B1-upD"/>
+                        <outlet property="medicinePickerView" destination="vMC-jZ-maw" id="Bda-nR-wqy"/>
+                        <outlet property="namePatientLabel" destination="8kM-zL-HA2" id="4b2-ss-Ema"/>
+                        <outlet property="pritoritySegmented" destination="hcY-kF-FVy" id="Hut-cO-fqd"/>
+                        <outlet property="scheduleDatePicker" destination="YZG-bB-nU4" id="JPw-vX-izb"/>
+                        <outlet property="typeDosageSegmented" destination="TW8-nH-Wfy" id="bqM-IZ-tpo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTy-hy-GtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
