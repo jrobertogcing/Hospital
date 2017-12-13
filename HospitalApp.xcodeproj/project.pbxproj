@@ -27,6 +27,8 @@
 		E159C1681FE0EF5400357F80 /* MedicationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E159C1661FE0EF5400357F80 /* MedicationTableViewCell.xib */; };
 		E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD371FDF39590013B207 /* NewUserViewController.swift */; };
 		E166BD3A1FDF55150013B207 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD391FDF55150013B207 /* NameViewController.swift */; };
+		E16BC5801FE1E5AB00ED039E /* PatientMedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BC57E1FE1E5AB00ED039E /* PatientMedicationTableViewCell.swift */; };
+		E16BC5811FE1E5AB00ED039E /* PatientMedicationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16BC57F1FE1E5AB00ED039E /* PatientMedicationTableViewCell.xib */; };
 		E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */; };
 		E17402CF1FE05CBE00C1FB99 /* PatientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */; };
 		E17402D01FE05CBE00C1FB99 /* PatientsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */; };
@@ -92,6 +94,8 @@
 		E159C1661FE0EF5400357F80 /* MedicationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MedicationTableViewCell.xib; sourceTree = "<group>"; };
 		E166BD371FDF39590013B207 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		E166BD391FDF55150013B207 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		E16BC57E1FE1E5AB00ED039E /* PatientMedicationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientMedicationTableViewCell.swift; sourceTree = "<group>"; };
+		E16BC57F1FE1E5AB00ED039E /* PatientMedicationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientMedicationTableViewCell.xib; sourceTree = "<group>"; };
 		E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
 		E17402CD1FE05CBE00C1FB99 /* PatientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTableViewCell.swift; sourceTree = "<group>"; };
 		E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PatientsTableViewCell.xib; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				E18CDDEE1FE09B5300AB14C0 /* DetailsMedicineViewController.swift */,
+				E16BC57E1FE1E5AB00ED039E /* PatientMedicationTableViewCell.swift */,
+				E16BC57F1FE1E5AB00ED039E /* PatientMedicationTableViewCell.xib */,
 			);
 			name = DetailsMedicines;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16BC5811FE1E5AB00ED039E /* PatientMedicationTableViewCell.xib in Resources */,
 				E126351E1FDF01C700FCECBE /* LaunchScreen.storyboard in Resources */,
 				E159C1681FE0EF5400357F80 /* MedicationTableViewCell.xib in Resources */,
 				E12635421FDF133F00FCECBE /* GoogleService-Info.plist in Resources */,
@@ -600,6 +607,7 @@
 				E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */,
 				E1FB8C731FDF804C008A1012 /* NurseViewController.swift in Sources */,
 				E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */,
+				E16BC5801FE1E5AB00ED039E /* PatientMedicationTableViewCell.swift in Sources */,
 				E18CDDEF1FE09B5300AB14C0 /* DetailsMedicineViewController.swift in Sources */,
 				E159C1641FE0EBCC00357F80 /* AssignMedicineViewController.swift in Sources */,
 				E12635131FDF01C700FCECBE /* ViewController.swift in Sources */,

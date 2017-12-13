@@ -20,7 +20,11 @@ class MedicinesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var medicinesName = [String]()
 
-    
+    var medicineBaseArray = [String]()
+    var dosageBaseArray = [String]()
+    var priorityBaseArray = [Int]()
+    var scheduleBaseArray = [String]()
+    var typeDosageBaseArray = [Int]()
     
     @IBOutlet weak var medicinesTableView: UITableView!
     
@@ -57,6 +61,7 @@ class MedicinesViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+//MARK: infoTable function
     func infoTable(){
         
         medicinesName.removeAll()
