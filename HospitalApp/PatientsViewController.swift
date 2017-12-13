@@ -146,8 +146,8 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         // send also the ID of the patient to save information to it in the next ViewController.
         nextViewController.idPatientReceived = patientsIDs[indexPath.row]
         
-        self.present(nextViewController, animated:true, completion:nil)
-
+        //self.present(nextViewController, animated:true, completion:nil)
+        self.navigationController?.pushViewController(nextViewController, animated:true)
     }
     
     

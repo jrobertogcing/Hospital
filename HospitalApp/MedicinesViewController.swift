@@ -119,8 +119,9 @@ class MedicinesViewController: UIViewController, UITableViewDelegate, UITableVie
         // send name to next Details View Controller
         nextViewController.nameMedicineReceived = medicinesName[indexPath.row]
         
-        self.present(nextViewController, animated:true, completion:nil)
-        
+        //self.present(nextViewController, animated:true, completion:nil)
+        self.navigationController?.pushViewController(nextViewController, animated:true)
+
         
     }
     
