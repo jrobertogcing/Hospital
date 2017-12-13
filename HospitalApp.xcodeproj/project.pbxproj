@@ -21,6 +21,7 @@
 		E12635421FDF133F00FCECBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E12635411FDF133F00FCECBE /* GoogleService-Info.plist */; };
 		E12635451FDF179F00FCECBE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635441FDF179F00FCECBE /* SignInViewController.swift */; };
 		E12635471FDF255100FCECBE /* NurseUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12635461FDF255100FCECBE /* NurseUITabBarController.swift */; };
+		E159C1611FE0DD7800357F80 /* DetailsPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E159C1601FE0DD7800357F80 /* DetailsPatientViewController.swift */; };
 		E166BD381FDF39590013B207 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD371FDF39590013B207 /* NewUserViewController.swift */; };
 		E166BD3A1FDF55150013B207 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E166BD391FDF55150013B207 /* NameViewController.swift */; };
 		E17402CA1FE0581E00C1FB99 /* PatientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */; };
@@ -82,6 +83,7 @@
 		E12635411FDF133F00FCECBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E12635441FDF179F00FCECBE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E12635461FDF255100FCECBE /* NurseUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NurseUITabBarController.swift; sourceTree = "<group>"; };
+		E159C1601FE0DD7800357F80 /* DetailsPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsPatientViewController.swift; sourceTree = "<group>"; };
 		E166BD371FDF39590013B207 /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		E166BD391FDF55150013B207 /* NameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		E17402C91FE0581E00C1FB99 /* PatientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 			name = LogIn;
 			sourceTree = "<group>";
 		};
+		E159C15F1FE0DD1F00357F80 /* DetailsPatient */ = {
+			isa = PBXGroup;
+			children = (
+				E159C1601FE0DD7800357F80 /* DetailsPatientViewController.swift */,
+			);
+			name = DetailsPatient;
+			sourceTree = "<group>";
+		};
 		E166BD361FDF38820013B207 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,17 +244,17 @@
 				E17402D81FE06C1100C1FB99 /* MedicinesViewController.swift */,
 				E17402DA1FE06C3700C1FB99 /* MedicinesTableViewCell.swift */,
 				E17402DB1FE06C3700C1FB99 /* MedicinesTableViewCell.xib */,
-				E18CDDED1FE09B2E00AB14C0 /* DetaildMedicines */,
+				E18CDDED1FE09B2E00AB14C0 /* DetailsMedicines */,
 			);
 			name = AddMedicine;
 			sourceTree = "<group>";
 		};
-		E18CDDED1FE09B2E00AB14C0 /* DetaildMedicines */ = {
+		E18CDDED1FE09B2E00AB14C0 /* DetailsMedicines */ = {
 			isa = PBXGroup;
 			children = (
 				E18CDDEE1FE09B5300AB14C0 /* DetailsMedicineViewController.swift */,
 			);
-			name = DetaildMedicines;
+			name = DetailsMedicines;
 			sourceTree = "<group>";
 		};
 		E1FB8C711FDF8029008A1012 /* Nurse */ = {
@@ -272,6 +282,7 @@
 				E17402CE1FE05CBE00C1FB99 /* PatientsTableViewCell.xib */,
 				E17402D11FE060CF00C1FB99 /* JSONManager.swift */,
 				E17402D31FE0616000C1FB99 /* JSONAdapter.swift */,
+				E159C15F1FE0DD1F00357F80 /* DetailsPatient */,
 			);
 			name = AddPatient;
 			sourceTree = "<group>";
@@ -573,6 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E159C1611FE0DD7800357F80 /* DetailsPatientViewController.swift in Sources */,
 				E1FB8C791FDF95BC008A1012 /* AddPatientViewController.swift in Sources */,
 				E17402D41FE0616000C1FB99 /* JSONAdapter.swift in Sources */,
 				E1FB8C761FDF818F008A1012 /* ResetPasswordViewController.swift in Sources */,

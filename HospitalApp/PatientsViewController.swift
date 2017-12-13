@@ -137,6 +137,23 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsPatientViewController") as! DetailsPatientViewController
+        
+        // send name to next Details View Controller
+        
+        nextViewController.namePatientReceived = "\(patientsName[indexPath.row]) \(patientsLastname[indexPath.row])"
+        
+        self.present(nextViewController, animated:true, completion:nil)
+
+    }
+    
+    
 //MARK: Function Read Data base Patients
     
     func dataBase(completion: @escaping (String) -> Void){
