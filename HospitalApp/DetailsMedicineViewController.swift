@@ -18,7 +18,8 @@ class DetailsMedicineViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var medicineNameLabel: UILabel!
     
     var nameMedicineReceived = ""
-    
+    var patientNameBaseArray = [String]()
+
     
     var arrayA = ["matute", "thor", "canela pachona y gordita"]
    
@@ -145,11 +146,30 @@ func infoTable(){
                     continue
                 }
                 
-                guard let dosageBase = medicationBase.key as? String else {
+                
+                for everyMedication in medicationBase {
                     
-                    return
+                    guard let nameMedicineBase = everyMedication.key as? NSDictionary else {
+                    
+                        return
+                    }
+                    
+                    guard let namePatientBase = nameMedicineBase["name"] as? String else {
+                        
+                        return
+                    }
+                    
+                    
+                    if namePatientBase == self.nameMedicineReceived {
+                    
+                    // save de key of the patient 
+                        patientNameBaseArray[namePatientBase]
+                        
+                    
+                    }
+                    
+                   // print(nameMedicineBase)
                 }
-            
             
             }//End  for everyData in dataInJSON
             
