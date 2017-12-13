@@ -27,26 +27,33 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     @IBOutlet weak var assignMedicationButton: UIButton!
     
-    
+    //variables
     var ref: DatabaseReference!
-    var pickerArray = ["","High", "Medium", "Low"]
     var pickerSelected = ""
 
+    var medicinesName = [String]()
+    
+    //variables received
+    var nameReceived = ""
+    var idPatientReceived = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+       
+        
+        // call infoMedicines
+        infoMedicines()
+        
+        medicinePickerView.dataSource = self
+        medicinePickerView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.view.isUserInteractionEnabled = false
-        
-        //activityIndicator.startAnimating()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+      
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,11 +64,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
 
     @IBAction func assignButtonAction(_ sender: UIButton) {
         
-       
         self.assignMedicationButton.isEnabled = false
 
-        
-        
     }//End assginButtonAction
 
     
@@ -69,6 +73,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
 //MARK: Save data Function
     
     func saveData()  {
+        
+        
+        let scheduleSave = readTime()
         
         guard let dosageSave = dosageTextField.text
             else{
@@ -92,8 +99,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             "medicine" : pickerSelected,
             "dosage" : dosageSave,
             "typeDosage" : typeDosageSave,
-            "priority": prioritySave
-            //"schedule" : resultsSave,
+            "priority": prioritySave,
+            "schedule" : scheduleSave
             
             ] as [String : Any]
         
@@ -103,7 +110,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             return
             }
         
-            ref.child(userID).child("Aqui es el numero de paciente").child("Medication").setValue(userDetails)
+            ref.child(userID).child("Patients").child(idPatientReceived).child("Medication").setValue(userDetails)
 
         }else {
         
@@ -114,9 +121,103 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
     }// End saveData Function
     
+//MARK: infotable function
+    
+    func infoMedicines(){
+        
+        medicinesName.removeAll()
+        
+        dataBase(){ data in
+            
+            if data  == "ready" {
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                
+            } else {print("No Medicines yet")
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                self.alertGeneral(errorDescrip: "No Medicines registered yet!", information: "Information")
+                
+            }// end IF
+            
+        }// End call dataBase function
+        
+    }//End func infoTable
+
+    
+
+//MARK: Function Read Data base Patients
+    
+    func dataBase(completion: @escaping (String) -> Void){
+        
+        //read Patient JSON
+        let refPat = Database.database().reference().child("Medicines");
+        
+        
+        refPat.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // Get user value
+            guard let dataInJSON = snapshot.value as? NSDictionary  else {
+                
+                print("no data in daba base Patient")
+                completion("NotFound")
+                // by this part we know that doctor not exist so we send to Name VC
+                
+                
+                return
+            }
+            
+            
+            for everyData in dataInJSON {
+                
+                guard let valuesKey = everyData.value as? NSDictionary else {
+                    
+                    return
+                }
+                
+                
+                guard let nameMedicine = valuesKey["name"] as? String else {
+                    
+                    return
+                }
+                //we add all the emails to Array
+                self.medicinesName.append(nameMedicine)
+                
+                
+            } //End for everyData in dataInJSON
+            
+            //check if the medicine exist and get its uid user ID
+            
+            completion("ready")
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+            
+            self.alertGeneral(errorDescrip: error.localizedDescription, information: "Information")
+            
+        }// end json for Doctor
+        
+    }// end dataBase Function
+
     
     
-//MARK :Picker View
+    
+ //MARK: readTime function
+    func readTime()-> String{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let strTime = dateFormatter.string(from: scheduleDatePicker.date)
+        
+        
+        return strTime
+    }
+    
+//MARK: Picker View
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -126,14 +227,20 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         
-        return pickerArray.count
+        
+        return medicinesName.count
+        
+        
         
     }
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return pickerArray[row]
+       
+        
+            return medicinesName[row]
+        
         
     }
     
@@ -141,9 +248,11 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         //  information to variable of the row selected
-        pickerSelected = pickerArray[row]
+        pickerSelected = medicinesName[row]
         
     }
+    
+
     
 //MARK : alertGeneral
     

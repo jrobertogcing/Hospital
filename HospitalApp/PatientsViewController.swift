@@ -23,12 +23,12 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
     var ref: DatabaseReference!
     
     var patientsKeys = [String]()
-    var patientsStatus = [String]()
     var patientsName = [String]()
     var patientsLastname = [String]()
     var patientsTelephone = [String]()
     var patientsEmail = [String]()
     var patientsUser = [String]()
+    var patientsIDs = [String]()
 
 
     
@@ -69,12 +69,10 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
     func infoTable(){
         
         patientsKeys.removeAll()
-        patientsStatus.removeAll()
         patientsName.removeAll()
         patientsLastname.removeAll()
         patientsTelephone.removeAll()
         patientsEmail.removeAll()
-        patientsUser.removeAll()
         
         dataBase(){ data in
             
@@ -85,10 +83,6 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.patientsTableView.isUserInteractionEnabled = true
-                    
-                    
-                
-                
                 
             } else {print("No patients yet")
                 
@@ -149,6 +143,9 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
         
         nextViewController.namePatientReceived = "\(patientsName[indexPath.row]) \(patientsLastname[indexPath.row])"
         
+        // send also the ID of the patient to save information to it in the next ViewController.
+        nextViewController.idPatientReceived = patientsIDs[indexPath.row]
+        
         self.present(nextViewController, animated:true, completion:nil)
 
     }
@@ -208,18 +205,22 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
                 guard let lastnamePatient = patientsValue["lastName"] as? String else {
                     
-                    print("nolast")
+                    
                     return
                 }
                 guard let telephonePatient = patientsValue["telehpone"] as? String else {
-                    print("notel")
 
                     return
                 }
                 guard let emailPatient = patientsValue["email"] as? String else {
                     
-                    print("noemail")
 
+                    return
+                }
+                
+                guard let idPatient = patientsValue["id"] as? String else {
+                    
+                    
                     return
                 }
                 
@@ -227,7 +228,7 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.patientsLastname.append(lastnamePatient)
                 self.patientsTelephone.append(telephonePatient)
                 self.patientsEmail.append(emailPatient)
-
+                self.patientsIDs.append(idPatient)
                 
 
                 

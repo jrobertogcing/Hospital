@@ -79,14 +79,11 @@ class MedicinesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 self.alertGeneral(errorDescrip: "No Medicines registered yet!", information: "Information")
                 
-            }
+            }// end IF
             
-            
-            
-        }
+        }// End call dataBase function
         
-        
-    }
+    }//End func infoTable
     
 
     

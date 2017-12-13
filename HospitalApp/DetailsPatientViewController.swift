@@ -21,6 +21,8 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
     //variables
     var arrayA = ["matute", "thor", "canela pachona y gordita"]
     var namePatientReceived = ""
+    var idPatientReceived = ""
+
 
     var ref: DatabaseReference!
     
@@ -28,6 +30,7 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         patientNameLabel.text = namePatientReceived
+        
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -74,6 +77,21 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
         return 140
         
     }
+    
+//MARK: prepare segue send ID and name
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "AssignMedicineViewController" {
+            if let destinationVC = segue.destination as? AssignMedicineViewController {
+                
+                destinationVC.nameReceived = namePatientReceived
+                destinationVC.idPatientReceived = idPatientReceived
+                
+            }//End if
+        }//End if
+        
+    }// end preparefor segue
     
 //MARK : alertGeneral
     
