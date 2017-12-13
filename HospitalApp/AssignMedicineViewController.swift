@@ -35,6 +35,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     //variables received
     var nameReceived = ""
+    var arrayPicker = ["gato", "pero","gato", "pero","gato", "pero"]
     var idPatientReceived = ""
 
     override func viewDidLoad() {
@@ -131,6 +132,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             
             if data  == "ready" {
                 
+                self.medicinePickerView.reloadAllComponents()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 
                 
@@ -228,9 +230,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         
         
-        return medicinesName.count
+       return medicinesName.count
         
-        
+       // return arrayPicker.count
         
     }
     
@@ -240,7 +242,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
        
         
             return medicinesName[row]
-        
+           // return arrayPicker[row]
         
     }
     
@@ -248,6 +250,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         //  information to variable of the row selected
+       
         pickerSelected = medicinesName[row]
         
     }
