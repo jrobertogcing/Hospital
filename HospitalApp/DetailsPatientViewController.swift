@@ -72,12 +72,37 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
         
         guard let medicationCell = cell as? MedicationTableViewCell else {return cell}
         
-        medicationCell.nameMedicineLabel.text = medicineBaseArray[indexPath.row]
-        medicationCell.dosageLabel.text = dosageBaseArray[indexPath.row]
-        medicationCell.scheduleTimeLabel.text = scheduleBaseArray[indexPath.row]
+        medicationCell.nameMedicineLabel.text = "Medicine: \(medicineBaseArray[indexPath.row])"
+        medicationCell.dosageLabel.text = "Dosage: \(dosageBaseArray[indexPath.row])"
+        medicationCell.scheduleTimeLabel.text = "Schedule: \(scheduleBaseArray[indexPath.row])"
         
-        medicationCell.priorityLabel.text = String(priorityBaseArray[indexPath.row])
-        medicationCell.typeDosageLabel.text = String(typeDosageBaseArray[indexPath.row])
+        var priorityValue = ""
+        switch priorityBaseArray[indexPath.row] {
+        case 0:
+            priorityValue = "High"
+        case 1:
+            priorityValue = "Medium"
+        case 2:
+            priorityValue = "Low"
+        
+        default:  priorityValue = "No"
+        }
+        
+        
+        var dosageTypeValue = ""
+        switch typeDosageBaseArray[indexPath.row] {
+        case 0:
+            dosageTypeValue = "ml."
+        case 1:
+            dosageTypeValue = "Pills"
+            
+        default:  priorityValue = "No"
+        }
+
+        
+        medicationCell.priorityLabel.text = priorityValue
+        
+        medicationCell.typeDosageLabel.text = dosageTypeValue
 
         
         return cell

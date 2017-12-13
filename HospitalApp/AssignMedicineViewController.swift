@@ -38,6 +38,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     var arrayPicker = ["gato", "pero","gato", "pero","gato", "pero"]
     var idPatientReceived = ""
     var patientID = ""
+    var namePatient = ""
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         namePatientLabel.text = nameReceived
 
+        nameReceived = namePatient
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
        
         print("here is ID")
@@ -308,6 +312,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsPatientViewController") as! DetailsPatientViewController
             
             
+            nextViewController.idPatientReceived = self.patientID
+            nextViewController.namePatientReceived = self.namePatient
             //self.present(nextViewController, animated:true, completion:nil)
             self.navigationController?.pushViewController(nextViewController, animated:true)
         
