@@ -303,7 +303,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Medicine"/>
                                 <connections>
-                                    <segue destination="Keh-d3-zZQ" kind="show" id="ook-zX-zIQ"/>
+                                    <segue destination="Keh-d3-zZQ" kind="show" identifier="AssignMedicineViewController" id="ook-zX-zIQ"/>
                                 </connections>
                             </button>
                         </subviews>

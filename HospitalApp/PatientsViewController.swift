@@ -90,14 +90,9 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 self.alertGeneral(errorDescrip: "No Patients registered yet!", information: "Information")
                 
-            }
-            
-            
-            
-        }
-        
-        
-    }
+            }//End if data  == "ready"
+        }//End call dataBase function
+    }// End func infoTable
 
     
     
@@ -164,8 +159,6 @@ class PatientsViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
-        
-// check in Json "Doctor"
         let ref = Database.database().reference().child("Nurse").child(userID).child("Patients");
         
         

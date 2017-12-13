@@ -37,13 +37,19 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     var nameReceived = ""
     var arrayPicker = ["gato", "pero","gato", "pero","gato", "pero"]
     var idPatientReceived = ""
+    var patientID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        patientID = idPatientReceived
+        
+        namePatientLabel.text = nameReceived
 
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
        
-        
+        print("here is ID")
+        print(patientID)
         // call infoMedicines
         infoMedicines()
         
@@ -53,8 +59,6 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     override func viewDidAppear(_ animated: Bool) {
         
-      
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,24 +70,35 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBAction func assignButtonAction(_ sender: UIButton) {
         
         self.assignMedicationButton.isEnabled = false
-
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        self.saveData() {  ready in
+            
+            //self.activityIndicator.stopAnimating()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if  ready == "ready" {
+                
+                self.alertNewMedication(errorDescrip: "You have assigned a new medication: \(self.pickerSelected) ", information: "Information")
+                
+            }//End if  ready == "ready"
+        }//End saveData Function()
     }//End assginButtonAction
 
     
     
 //MARK: Save data Function
     
-    func saveData()  {
+    func saveData(completion: @escaping (String) -> Void)  {
         
         
         let scheduleSave = readTime()
         
-        guard let dosageSave = dosageTextField.text
-            else{
+        guard let dosageSave = dosageTextField.text, dosageSave != ""  else{
                
-                // alert
-                
-        return
+            alertGeneral(errorDescrip: "Fill all the fields", information: "Information")
+            
+            return
         }
         
         if pickerSelected != "" {
@@ -91,9 +106,12 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             let typeDosageSave = typeDosageSegmented.selectedSegmentIndex
 
             let prioritySave = pritoritySegmented.selectedSegmentIndex
-        
-        
-            ref = Database.database().reference().child("Nurse")
+            
+            guard let userID = Auth.auth().currentUser?.uid else {
+                
+                return
+            }
+            ref = Database.database().reference().child("Nurse").child(userID).child("Patients").child(patientID)
         
         
             let userDetails = [
@@ -105,17 +123,15 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             
             ] as [String : Any]
         
-        
-            guard let userID = Auth.auth().currentUser?.uid else {
             
-            return
-            }
-        
-            ref.child(userID).child("Patients").child(idPatientReceived).child("Medication").setValue(userDetails)
+            ref.child("Medication").child(pickerSelected).setValue(userDetails)
 
+            completion("ready")
+            
         }else {
         
         // Alert no medicine selected
+            alertGeneral(errorDescrip: "Select the medicine", information: "Information")
         
         }
         
@@ -253,6 +269,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
        
         pickerSelected = medicinesName[row]
         
+        print(pickerSelected)
+        
     }
     
 
@@ -262,6 +280,7 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     func alertGeneral(errorDescrip:String, information: String) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        assignMedicationButton.isEnabled = true
         
         let alertGeneral = UIAlertController(title: information, message: errorDescrip, preferredStyle: .alert)
         
@@ -272,7 +291,32 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
     }//End Alert General
     
+//MARK : alertNew Medication
     
+    func alertNewMedication(errorDescrip:String, information: String) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        assignMedicationButton.isEnabled = true
+        
+        let alertGeneral = UIAlertController(title: information, message: errorDescrip, preferredStyle: .alert)
+        
+        let aceptAction = UIAlertAction(title: "Ok", style: .default) { UIAlertAction in
+        
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailsPatientViewController") as! DetailsPatientViewController
+            
+            
+            //self.present(nextViewController, animated:true, completion:nil)
+            self.navigationController?.pushViewController(nextViewController, animated:true)
+        
+        
+        }
+        alertGeneral.addAction(aceptAction)
+        present(alertGeneral, animated: true)
+        
+    }//End Alert General
    
 }// End ViewController
 
