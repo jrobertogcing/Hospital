@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -35,10 +36,12 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     //variables received
     var nameReceived = ""
-    var arrayPicker = ["gato", "pero","gato", "pero","gato", "pero"]
     var idPatientReceived = ""
     var patientID = ""
     var namePatient = ""
+    
+    var appointmentTimePicker = ""
+
 
 
     override func viewDidLoad() {
@@ -78,7 +81,20 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         self.saveData() {  ready in
             
-            //self.activityIndicator.stopAnimating()
+           
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            
+            let dateTime = self.readTime()
+            
+            guard let dateAppointment = dateFormatter.date(from: dateTime ) else {
+                print("no notification")
+                return
+            }
+            
+            // activitate notification
+            self.callNotification(date: dateAppointment, patientName: self.namePatient)
+            
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
             if  ready == "ready" {
@@ -239,6 +255,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         return strTime
     }
     
+        
+
+    
 //MARK: Picker View
     
     
@@ -248,21 +267,14 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        
-        
        return medicinesName.count
-        
-       // return arrayPicker.count
         
     }
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-       
-        
-            return medicinesName[row]
-           // return arrayPicker[row]
+        return medicinesName[row]
         
     }
     
@@ -277,6 +289,33 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
     }
     
+//MARK: call Notification Function
+    func callNotification(date: Date, patientName: String){
+        
+        // for one hour
+        
+        let contentOneHour = UNMutableNotificationContent()
+        contentOneHour.title = "Medication"
+        contentOneHour.subtitle = "Hour : \(date)"
+        contentOneHour.body = "Patient's name: \(patientName)"
+        contentOneHour.badge = 1
+        contentOneHour.sound = UNNotificationSound.default()
+        
+        
+        
+        let dateComponentsOneHour = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        
+        
+        
+        let triggerDateOneHour = UNCalendarNotificationTrigger(dateMatching: dateComponentsOneHour, repeats: false)
+        let requestOneHour = UNNotificationRequest(identifier: "oneHourNotification", content: contentOneHour, trigger: triggerDateOneHour)
+        
+        UNUserNotificationCenter.current().add(requestOneHour, withCompletionHandler: nil)
+        
+        
+        
+    }
+  
 
     
 //MARK : alertGeneral

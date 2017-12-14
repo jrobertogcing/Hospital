@@ -197,6 +197,7 @@ class AddMedicineViewController: UIViewController {
         
     }// End saveData Function
     
+    
     //MARK: Alert
     
     func alertGeneral(errorDescrip:String, information: String) {

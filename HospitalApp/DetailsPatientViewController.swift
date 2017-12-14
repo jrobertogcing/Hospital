@@ -100,7 +100,7 @@ class DetailsPatientViewController: UIViewController, UITableViewDelegate, UITab
         }
 
         
-        medicationCell.priorityLabel.text = priorityValue
+        medicationCell.priorityLabel.text = "Priority: \(priorityValue)"
         
         medicationCell.typeDosageLabel.text = dosageTypeValue
 
