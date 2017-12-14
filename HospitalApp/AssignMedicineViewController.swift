@@ -55,8 +55,6 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
        
-        print("here is ID")
-        print(patientID)
         // call infoMedicines
         infoMedicines()
         
@@ -81,10 +79,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         self.saveData() {  ready in
             
-           
+           // Format for the date in notification
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat =  "HH:mm"
-            
             let dateTime = self.readTime()
             
             guard let dateAppointment = dateFormatter.date(from: dateTime ) else {
@@ -92,8 +89,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
                 return
             }
             
+            
             // activitate notification
-            self.callNotification(date: dateAppointment, patientName: self.namePatient)
+            self.callNotification(hour: dateTime, date: dateAppointment, patientName: self.namePatientLabel.text!)
             
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
@@ -290,22 +288,22 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
 //MARK: call Notification Function
-    func callNotification(date: Date, patientName: String){
+    func callNotification(hour: String, date: Date , patientName: String){
         
         // for one hour
         
         let contentOneHour = UNMutableNotificationContent()
         contentOneHour.title = "Medication"
-        contentOneHour.subtitle = "Hour : \(date)"
+        contentOneHour.subtitle = "Hour : \(hour)"
         contentOneHour.body = "Patient's name: \(patientName)"
         contentOneHour.badge = 1
         contentOneHour.sound = UNNotificationSound.default()
         
         
         
-        let dateComponentsOneHour = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        //let dateComponentsOneHour = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
         
-        
+        let dateComponentsOneHour = Calendar.current.dateComponents([.hour, .minute], from: date)
         
         let triggerDateOneHour = UNCalendarNotificationTrigger(dateMatching: dateComponentsOneHour, repeats: false)
         let requestOneHour = UNNotificationRequest(identifier: "oneHourNotification", content: contentOneHour, trigger: triggerDateOneHour)
@@ -353,7 +351,8 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
             
             nextViewController.idPatientReceived = self.patientID
             nextViewController.namePatientReceived = self.namePatient
-            //self.present(nextViewController, animated:true, completion:nil)
+            
+            
             self.navigationController?.pushViewController(nextViewController, animated:true)
         
         

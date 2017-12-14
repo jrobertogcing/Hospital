@@ -244,7 +244,7 @@
         <!--Patients View Controller-->
         <scene sceneID="kfo-Vm-v4L">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="yhX-ue-vEl" customClass="PatientsViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientsViewController" automaticallyAdjustsScrollViewInsets="NO" id="yhX-ue-vEl" customClass="PatientsViewController" customModule="HospitalApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZiN-yX-kZf"/>
                         <viewControllerLayoutGuide type="bottom" id="gUS-eV-JjL"/>
