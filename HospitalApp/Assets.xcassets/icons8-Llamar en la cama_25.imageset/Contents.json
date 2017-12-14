@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-medical-doctor-25.png",
+      "filename" : "icons8-Llamar en la cama_25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-Llamar en la cama_50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-Llamar en la cama_100.png",
       "scale" : "3x"
     }
   ],

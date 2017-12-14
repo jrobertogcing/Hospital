@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-pill-filled-25.png",
+      "filename" : "icons8-Bata de Laboratorio médicos_25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-Bata de Laboratorio médicos_50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-Bata de Laboratorio médicos_100.png",
       "scale" : "3x"
     }
   ],
