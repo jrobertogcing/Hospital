@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class NewUserViewController: UIViewController {
+class NewUserViewController: UIViewController,UITextFieldDelegate {
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -29,7 +29,11 @@ class NewUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.emailTextField.delegate = self;
+        self.passwordTextField.delegate = self;
+        self.repeatPassTextField.delegate = self;
+
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -172,4 +176,10 @@ func alertGeneral(errorDescrip:String, information: String) {
     }// End AlertEmailVerification
    
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
 }// End ViewController

@@ -137,10 +137,26 @@ class NurseViewController: UIViewController {
         }// end json for Doctor
         
     }// End dataBase function
+    
+    
+    @IBAction func signOutButtonAction(_ sender: UIButton) {
+        
+        //Sign Out
+        try! Auth.auth().signOut()
+        
+        // send to main first VC
+        // send to the nexe UIViewController
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        self.present(nextViewController, animated:true, completion:nil)
+
+        
+    }
+    
 
 //MARK: Alerts
-    
-    
     
     func alertGeneral(errorDescrip:String, information: String) {
         

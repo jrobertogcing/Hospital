@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -22,7 +22,7 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.emailTextField.delegate = self;
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,9 +91,12 @@ class ResetPasswordViewController: UIViewController {
         present(alertGeneral, animated: true)
         
         
-    }
+    }// End alert General
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
    

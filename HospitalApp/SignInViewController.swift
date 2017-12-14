@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -39,7 +39,9 @@ class SignInViewController: UIViewController {
         // If someOne is already SignIn, SignOut.
         try! Auth.auth().signOut()
 
-        
+        self.emailTextField.delegate = self;
+        self.passwordTextField.delegate = self;
+
         
     }
 
@@ -309,10 +311,12 @@ class SignInViewController: UIViewController {
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "NameViewController") as! NameViewController
         self.present(nextViewController, animated:true, completion:nil)
         
-        
-        
-        
     }// end func SendToVC
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 
 }// End ViewController

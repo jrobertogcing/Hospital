@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddMedicineViewController: UIViewController {
+class AddMedicineViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var nameMedicineLabel: UITextField!
@@ -29,6 +29,9 @@ class AddMedicineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.nameMedicineLabel.delegate = self;
+
 
     }
 
@@ -218,7 +221,10 @@ class AddMedicineViewController: UIViewController {
         
     }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
    
 }//End ViewController

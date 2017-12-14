@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class NameViewController: UIViewController {
+class NameViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -31,6 +31,9 @@ class NameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.nameTextField.delegate = self;
+        self.lastnameTextField.delegate = self;
+
         
         //check if the user is online
         
@@ -142,6 +145,11 @@ class NameViewController: UIViewController {
         present(alertGeneral, animated: true)
         
         
+    }//End alert General
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }// End ViewController
