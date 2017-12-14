@@ -21,6 +21,7 @@ class DetailsMedicineViewController: UIViewController, UITableViewDelegate, UITa
     var patientNameBaseArray = [String]()
     
     var namePatientGet = ""
+    var lastnamePatientGet = ""
     var flagForMatch = ""
     
    
@@ -149,6 +150,14 @@ func infoTable(){
                 }
                 
                 self.namePatientGet = namePatient
+                
+                guard let lastnamePatient  = patientsValue["lastName"] as? String else {
+                    
+                    print("no lastNAME")
+                    return
+                }
+                
+                self.lastnamePatientGet = lastnamePatient
 
                 
                 guard let medicationBase  = patientsValue["Medication"] as? NSDictionary else {
@@ -182,7 +191,7 @@ func infoTable(){
                     */
                     if medicineNameString == self.nameMedicineReceived {
                     
-                        self.patientNameBaseArray.append(self.namePatientGet)
+                        self.patientNameBaseArray.append("\(self.namePatientGet)  \(self.lastnamePatientGet)" )
 
                         print("ready")
                         self.flagForMatch = "Match"
