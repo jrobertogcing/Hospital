@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddPatientViewController: UIViewController {
+class AddPatientViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -32,7 +32,12 @@ class AddPatientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.nameTextField.delegate = self;
+        self.lastnameTextField.delegate = self;
+        self.telephoneTextField.delegate = self;
+        self.emailTextField.delegate = self;
+
+
 
     }
 
