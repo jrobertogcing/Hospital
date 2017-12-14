@@ -966,6 +966,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PkS-H8-p4v" firstAttribute="leading" secondItem="OEt-DU-GxK" secondAttribute="leading" id="0yM-Sd-Nsw"/>
                             <constraint firstItem="h1C-Yg-WKa" firstAttribute="width" secondItem="OEt-DU-GxK" secondAttribute="width" id="KzH-M6-ZHp"/>
@@ -973,6 +974,9 @@
                             <constraint firstItem="PkS-H8-p4v" firstAttribute="top" secondItem="Mq4-9q-5tm" secondAttribute="bottom" id="WQF-lZ-8Ox"/>
                             <constraint firstAttribute="trailing" secondItem="PkS-H8-p4v" secondAttribute="trailing" id="oDg-Vv-bws"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iaA-Wq-hzR" appends="YES" id="9mK-rv-6V4"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Patient" image="icons8-Doctor en medicina_25" id="7DE-PP-4Qy"/>
                     <connections>
@@ -985,6 +989,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3V-Dk-4zO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iaA-Wq-hzR"/>
             </objects>
             <point key="canvasLocation" x="5356.875" y="45"/>
         </scene>

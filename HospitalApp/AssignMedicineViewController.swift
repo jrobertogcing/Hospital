@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
 
-class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var namePatientLabel: UILabel!
     
@@ -60,6 +60,9 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         medicinePickerView.dataSource = self
         medicinePickerView.delegate = self
+        
+        self.dosageTextField.delegate = self
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -361,6 +364,12 @@ class AssignMedicineViewController: UIViewController, UIPickerViewDelegate, UIPi
         present(alertGeneral, animated: true)
         
     }//End Alert General
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
    
 }// End ViewController
 
