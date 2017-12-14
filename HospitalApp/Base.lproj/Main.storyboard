@@ -498,14 +498,161 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3CG-oM-hYc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CG-oM-hYc">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPW-6h-rns">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPW-6h-rns">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assign Medication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoC-Ox-ew2">
+                                                <rect key="frame" x="16" y="51" width="288" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="hbO-3x-5pG"/>
+                                                    <constraint firstAttribute="width" constant="288" id="sO6-M1-kcO"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="patientName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kM-zL-HA2">
+                                                <rect key="frame" x="13" y="85" width="294" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="294" id="MWR-o3-mjO"/>
+                                                    <constraint firstAttribute="height" constant="21" id="lCb-mY-bFd"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select medicine:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rg-b2-wyh">
+                                                <rect key="frame" x="96" y="130" width="127" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="OTV-4j-PdT"/>
+                                                    <constraint firstAttribute="width" constant="127" id="zXQ-7u-j3i"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dosage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbf-TY-KDz">
+                                                <rect key="frame" x="13" y="280" width="64" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="kUV-aQ-FdD"/>
+                                                    <constraint firstAttribute="width" constant="64" id="tBK-Dl-doM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0Z-Me-iWf">
+                                                <rect key="frame" x="107" y="275" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="65" id="axz-b6-9ZV"/>
+                                                    <constraint firstAttribute="height" constant="30" id="g3o-xt-IAa"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                            </textField>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TW8-nH-Wfy">
+                                                <rect key="frame" x="199" y="275" width="105" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="105" id="DCu-pp-hQ1"/>
+                                                    <constraint firstAttribute="height" constant="28" id="nIO-la-4DT"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="ml"/>
+                                                    <segment title="pills"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hcY-kF-FVy">
+                                                <rect key="frame" x="96" y="325" width="207" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="G5v-tv-983"/>
+                                                    <constraint firstAttribute="width" constant="207" id="tXa-Jg-LO5"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="Height"/>
+                                                    <segment title="Medium"/>
+                                                    <segment title="Low"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-Yz-cLe">
+                                                <rect key="frame" x="13" y="332" width="64" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="7gf-Ai-KZf"/>
+                                                    <constraint firstAttribute="height" constant="21" id="IIk-Iw-U9x"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YZG-bB-nU4">
+                                                <rect key="frame" x="39" y="413" width="241" height="99"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="99" id="FWi-5d-uEc"/>
+                                                    <constraint firstAttribute="width" constant="241" id="wC8-3g-Vv9"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="534833076.821244">
+                                                    <!--2017-12-13 04:44:36 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-h5-nzG">
+                                                <rect key="frame" x="96" y="384" width="127" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="127" id="Dd5-Tc-qQg"/>
+                                                    <constraint firstAttribute="height" constant="21" id="bmc-Zn-yfS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOk-HB-n9H">
+                                                <rect key="frame" x="97" y="546" width="126" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="126" id="3aY-pM-Qbt"/>
+                                                    <constraint firstAttribute="height" constant="30" id="DX5-Gz-VTn"/>
+                                                </constraints>
+                                                <state key="normal" title="Assign Medication"/>
+                                                <connections>
+                                                    <action selector="assignButtonAction:" destination="Keh-d3-zZQ" eventType="touchUpInside" id="yfF-in-rBk"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-jZ-maw">
+                                                <rect key="frame" x="50" y="157" width="219" height="93"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="219" id="DZg-PK-GPC"/>
+                                                    <constraint firstAttribute="height" constant="93" id="Hrm-9w-wgl"/>
+                                                </constraints>
+                                            </pickerView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="YZG-bB-nU4" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="3B2-7f-GkP"/>
+                                            <constraint firstItem="hcY-kF-FVy" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" constant="39" id="7uO-7t-1lY"/>
+                                            <constraint firstItem="8kM-zL-HA2" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="85" id="Bps-pk-1bE"/>
+                                            <constraint firstItem="hOk-HB-n9H" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="546" id="CvO-N5-97y"/>
+                                            <constraint firstItem="AoC-Ox-ew2" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="H3T-rr-Fpu"/>
+                                            <constraint firstItem="TW8-nH-Wfy" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" constant="91" id="KQR-Q4-ttQ"/>
+                                            <constraint firstItem="hOk-HB-n9H" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="Mlp-My-5IS"/>
+                                            <constraint firstItem="EQx-h5-nzG" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="384" id="OU2-v0-zJ7"/>
+                                            <constraint firstItem="TW8-nH-Wfy" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="275" id="Wxu-bx-Kfq"/>
+                                            <constraint firstItem="3rg-b2-wyh" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="130" id="Y6q-Fs-zvK"/>
+                                            <constraint firstItem="y0Z-Me-iWf" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="275" id="aga-y9-euY"/>
+                                            <constraint firstItem="AoC-Ox-ew2" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="51" id="bPQ-69-bsf"/>
+                                            <constraint firstItem="y0Z-Me-iWf" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" constant="-20" id="bpo-zo-Wef"/>
                                             <constraint firstAttribute="height" constant="800" id="d34-y7-qqP"/>
+                                            <constraint firstItem="vMC-jZ-maw" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="hFI-S6-TNv"/>
+                                            <constraint firstItem="N7P-Yz-cLe" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" constant="-115" id="hFS-N1-t5j"/>
+                                            <constraint firstItem="YZG-bB-nU4" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="413" id="kKR-tx-lct"/>
+                                            <constraint firstItem="3rg-b2-wyh" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="oeP-de-TYW"/>
+                                            <constraint firstItem="vbf-TY-KDz" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" constant="-115" id="q34-21-ThM"/>
+                                            <constraint firstItem="8kM-zL-HA2" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="qF6-l8-GOR"/>
+                                            <constraint firstItem="vMC-jZ-maw" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="157" id="qUP-Uj-S3t"/>
+                                            <constraint firstItem="vbf-TY-KDz" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="280" id="r6b-L3-vt4"/>
+                                            <constraint firstItem="hcY-kF-FVy" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="325" id="rZf-jw-xkL"/>
+                                            <constraint firstItem="N7P-Yz-cLe" firstAttribute="top" secondItem="FPW-6h-rns" secondAttribute="top" constant="332" id="tgo-Ib-zuj"/>
+                                            <constraint firstItem="EQx-h5-nzG" firstAttribute="centerX" secondItem="FPW-6h-rns" secondAttribute="centerX" id="vz8-Hb-8il"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -516,94 +663,10 @@
                                     <constraint firstAttribute="trailing" secondItem="FPW-6h-rns" secondAttribute="trailing" id="qKb-u8-2oe"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Assign Medication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoC-Ox-ew2">
-                                <rect key="frame" x="13" y="67" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="patientName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kM-zL-HA2">
-                                <rect key="frame" x="13" y="108" width="294" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select medicine:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rg-b2-wyh">
-                                <rect key="frame" x="94" y="137" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dosage:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbf-TY-KDz">
-                                <rect key="frame" x="13" y="275" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0Z-Me-iWf">
-                                <rect key="frame" x="94" y="272" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                            </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TW8-nH-Wfy">
-                                <rect key="frame" x="196" y="273" width="105" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="ml"/>
-                                    <segment title="pills"/>
-                                </segments>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hcY-kF-FVy">
-                                <rect key="frame" x="94" y="326" width="207" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Height"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Low"/>
-                                </segments>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-Yz-cLe">
-                                <rect key="frame" x="13" y="329" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="YZG-bB-nU4">
-                                <rect key="frame" x="40" y="428" width="241" height="99"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="534833076.821244">
-                                    <!--2017-12-13 04:44:36 +0000-->
-                                </date>
-                            </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQx-h5-nzG">
-                                <rect key="frame" x="86" y="386" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.070588235289999995" green="0.36078431370000003" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOk-HB-n9H">
-                                <rect key="frame" x="94" y="562" width="126" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Assign Medication"/>
-                                <connections>
-                                    <action selector="assignButtonAction:" destination="Keh-d3-zZQ" eventType="touchUpInside" id="yfF-in-rBk"/>
-                                </connections>
-                            </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMC-jZ-maw">
-                                <rect key="frame" x="48" y="166" width="219" height="93"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.53531390379999999" green="0.83808021320000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="FPW-6h-rns" firstAttribute="width" secondItem="7W1-4M-UPc" secondAttribute="width" id="6TF-6N-uic"/>
                             <constraint firstItem="3CG-oM-hYc" firstAttribute="top" secondItem="J9f-ux-p64" secondAttribute="bottom" id="EJm-zZ-1lU"/>
                             <constraint firstAttribute="trailing" secondItem="3CG-oM-hYc" secondAttribute="trailing" id="PQP-8f-A0K"/>
                             <constraint firstItem="MHc-ZQ-0Ol" firstAttribute="top" secondItem="3CG-oM-hYc" secondAttribute="bottom" id="d03-C7-fgt"/>
