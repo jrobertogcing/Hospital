@@ -21,9 +21,8 @@ class DetailsMedicineViewController: UIViewController, UITableViewDelegate, UITa
     var patientNameBaseArray = [String]()
     
     var namePatientGet = ""
-
+    var flagForMatch = ""
     
-    var arrayA = ["matute", "thor", "canela pachona y gordita"]
    
     var ref: DatabaseReference!
     
@@ -154,7 +153,7 @@ func infoTable(){
                 
                 guard let medicationBase  = patientsValue["Medication"] as? NSDictionary else {
                     
-                    print("no medicationBase")
+                    //print("no medicationBase")
                     continue
                 }
                 
@@ -175,25 +174,35 @@ func infoTable(){
                         print("no patientName")
                         return
                     }
+                    /*
                     print("Este es el nombre de la medicina encontrada")
                     print(medicineNameString)
                     print("Este es el nombre de la medicina solicitada")
                     print(self.nameMedicineReceived)
-                    
+                    */
                     if medicineNameString == self.nameMedicineReceived {
                     
                         self.patientNameBaseArray.append(self.namePatientGet)
 
                         print("ready")
+                        self.flagForMatch = "Match"
+
                     }
-                    
                     
                 } //End  for everyMedication in medicationBase
             
             }//End  for everyData in dataInJSON
             
-                        completion("ready")
-
+            
+            if self.flagForMatch == "Match" {
+                
+                completion("ready")
+            
+            } else {
+            
+                completion("NoMatch")
+            
+            }
             
             
             
