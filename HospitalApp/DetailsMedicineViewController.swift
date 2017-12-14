@@ -19,6 +19,8 @@ class DetailsMedicineViewController: UIViewController, UITableViewDelegate, UITa
     
     var nameMedicineReceived = ""
     var patientNameBaseArray = [String]()
+    
+    var namePatientGet = ""
 
     
     var arrayA = ["matute", "thor", "canela pachona y gordita"]
@@ -83,7 +85,8 @@ func infoTable(){
 //MARK: Table ViewController
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayA.count
+        //return arrayA.count
+        return patientNameBaseArray.count
     }
     
     
@@ -93,7 +96,7 @@ func infoTable(){
         
         guard let medicationCell = cell as? PatientMedicationTableViewCell else {return cell}
         
-        medicationCell.namePatientLabel.text = "Name: \(arrayA[indexPath.row])"
+        medicationCell.namePatientLabel.text = "Name: \(patientNameBaseArray[indexPath.row])"
         
         return cell
         
@@ -129,7 +132,6 @@ func infoTable(){
                 return
             }
             
-           // print(dataInJSON)
             
             for everyData in dataInJSON {
             
@@ -139,6 +141,16 @@ func infoTable(){
                     return
                 }
                 
+                
+                
+                guard let namePatient  = patientsValue["name"] as? String else {
+                    
+                    print("no NAME")
+                    return
+                }
+                
+                self.namePatientGet = namePatient
+
                 
                 guard let medicationBase  = patientsValue["Medication"] as? NSDictionary else {
                     
@@ -146,83 +158,41 @@ func infoTable(){
                     continue
                 }
                 
+              // print(medicationBase)
                 
                 for everyMedication in medicationBase {
                     
-                    guard let nameMedicineBase = everyMedication.key as? NSDictionary else {
+                    guard let nameMedicineBase = everyMedication.value as? NSDictionary else {
                     
+                        print("no tute1")
                         return
                     }
                     
-                    guard let namePatientBase = nameMedicineBase["name"] as? String else {
+                    //print(nameMedicineBase)
+                   
+                    guard let medicineNameString  = nameMedicineBase["medicine"] as? String else {
                         
+                        print("no patientName")
                         return
                     }
+                    print("Este es el nombre de la medicina encontrada")
+                    print(medicineNameString)
+                    print("Este es el nombre de la medicina solicitada")
+                    print(self.nameMedicineReceived)
                     
+                    if medicineNameString == self.nameMedicineReceived {
                     
-                    if namePatientBase == self.nameMedicineReceived {
-                    
-                    // save de key of the patient 
-                        patientNameBaseArray[namePatientBase]
-                        
-                    
+                        self.patientNameBaseArray.append(self.namePatientGet)
+
+                        print("ready")
                     }
                     
-                   // print(nameMedicineBase)
-                }
+                    
+                } //End  for everyMedication in medicationBase
             
             }//End  for everyData in dataInJSON
             
-            /*
-            for everyData in dataInJSON {
-                
-                
-                guard let patientsValue = everyData.value as? NSDictionary else {
-                    
-                    print("no data")
-                    return
-                }
-                
-                
-                guard let dosageBase = patientsValue["dosage"] as? String else {
-                    
-                    return
-                }
-                
-                guard let medicineBase = patientsValue["medicine"] as? String else {
-                    
-                    return
-                }
-                
-                guard let priorityBase = patientsValue["priority"] as? Int else {
-                    
-                    return
-                }
-                
-                guard let scheduleBase = patientsValue["schedule"] as? String else {
-                    
-                    return
-                }
-                
-                guard let typeDosageBase = patientsValue["typeDosage"] as? Int else {
-                    
-                    return
-                }
-                
-                print(typeDosageBase)
-                
-                
-                self.dosageBaseArray.append(dosageBase)
-                self.medicineBaseArray.append(medicineBase)
-                self.priorityBaseArray.append(priorityBase)
-                self.scheduleBaseArray.append(scheduleBase)
-                self.typeDosageBaseArray.append(typeDosageBase)
-                
-                
-                
-            }// End  for everyData in dataInJSON
-            */
-            completion("ready")
+                        completion("ready")
 
             
             
